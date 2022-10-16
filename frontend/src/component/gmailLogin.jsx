@@ -9,7 +9,13 @@ import {
 import { auth } from '../FirebaseConfig'
 const GmailLogin = () => {
  return(
-  <div>gmailLogin</div>
+  <div className='gmailLogin'>
+    <input
+      type='Email'
+      render
+    ></input>
+    
+  </div>
  )
 }
 
