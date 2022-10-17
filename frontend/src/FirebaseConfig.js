@@ -10,18 +10,6 @@ const firebaseApp = initializeApp({
     messagingSenderId: "836796879112",
     appId: "1:836796879112:web:d99076a2cc961d319a5cbd"
 })
-
-const auth = getAuth(firebaseApp);
-const db = getFirestore(firebaseApp)
-// const todosCol = collection(db, 'todos');
-// const snapshot = await getDocs(todosCol);
-
-
-// Detect auth state
-// onAuthStateChanged(auth, user =>{
-//     if(user != null){
-//         console.log('logged in!');
-//     } else{
-//         console.log('No user');
-//     }
-// })
+export default firebaseApp;
+export const auth = getAuth(firebaseApp);
+export const db = getFirestore(firebaseApp)
