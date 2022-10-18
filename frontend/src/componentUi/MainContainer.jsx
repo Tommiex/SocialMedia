@@ -18,7 +18,7 @@ function MainContainer() {
             <MenuContainer></MenuContainer>
           </div>
         </div>
-      </div>
+       </div>
       <main></main>
     </div>
   );
