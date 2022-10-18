@@ -5,6 +5,11 @@ import {
   connectAuthEmulator,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from '../FirebaseConfig'
 import firebaseApp from '../FirebaseConfig';
@@ -26,8 +31,7 @@ function SignUp(){
         const errorMessage = error.message;
       });
 
-}
-export const userContext = React.createContext()
+    }
 const Login = ()=>{
     const [userLogin, setuserLogin] = useState(false)
     const navigate= useNavigate()
@@ -51,6 +55,27 @@ const Login = ()=>{
     });
     
 }
+
+
+const AuthContext = createContext()
+export const AuthContextProvider = ({children})=> {
+    const googleLogin = ()=>{
+        const provider = new GoogleAuthProvider();
+        const auth = getAuth()
+        signInWithPopup(auth ,provider)
+    }
+    
+    return(
+        <AuthContext.Provider value={{googleLogin}}>
+            {children}
+        </AuthContext.Provider>
+    )
+}
+export const UserAuth =()=>{
+    return useContext(AuthContext)
+}
+
+
 
 
 

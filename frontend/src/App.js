@@ -5,6 +5,7 @@ import Test from "./data/dataTest";
 import GmailSignUp from './component/gmailSignUp'
 function App() {
   return (
+    
     <Routes>
         <Route path='/registration' element={<Login/>}/>
         <Route path='/registration/signup' element={<GmailSignUp/>}/>
