@@ -12,7 +12,7 @@ const GoogleLogin = () => {
     } catch(error){
       console.log(error)
     }
-    console.log(UserAuth)
+    
   }
   return (
     <button className='googleLogin' onClick={() =>{handleGoogleLogin()}}>
