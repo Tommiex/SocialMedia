@@ -1,6 +1,6 @@
 import React, { useEffect }from 'react'
 import { FcGoogle } from 'react-icons/fc';
-import {AuthcontextProvider, UserAuth} from './AuthSystem'
+import { UserAuth} from './AuthSystem'
 
 import './CSS/googleLogin.css'
 const GoogleLogin = () => {
@@ -12,7 +12,7 @@ const GoogleLogin = () => {
     } catch(error){
       console.log(error)
     }
-
+    console.log(UserAuth)
   }
   return (
     <button className='googleLogin' onClick={() =>{handleGoogleLogin()}}>

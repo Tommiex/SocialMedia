@@ -14,7 +14,6 @@ const Login = () => {
               <div> Login with Google</div>
               <GoogleLogin/>
           </div>
-          
       </div>
     </AuthContextProvider>
   )

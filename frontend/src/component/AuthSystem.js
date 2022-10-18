@@ -63,6 +63,7 @@ export const AuthContextProvider = ({children})=> {
         const provider = new GoogleAuthProvider();
         const auth = getAuth()
         signInWithPopup(auth ,provider)
+        
     }
     
     return(
