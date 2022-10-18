@@ -6,7 +6,7 @@
   background-color: aliceblue;
   display: flex;
   overflow-x: hidden;
-  padding: 0px 40px;
+  /* padding: 0px 40px; */
 }
 
 .menuContainer {
@@ -20,7 +20,7 @@
   padding: 30px 15px;
   gap: 55px;
 
-  /* background: blue; */
+  background: rgb(255, 255, 255);
 }
 .subMenu {
   height: 100%;
@@ -32,7 +32,7 @@
 main {
   flex: 1;
   height: 100%;
-  /* background: purple; */
+  background: purple;
 }
 .logo {
   width: 70px;
@@ -52,14 +52,9 @@ main {
   margin: 15px 0px;
 }
 
-.iconStyle:hover{
-    background: rgba(100, 100, 100, 0.149);
+.iconStyle:hover {
+  background: rgba(100, 100, 100, 0.149);
 }
-.iconStyle:hover.loveIcon{
-    color: aliceblue;
-    
+.iconStyle:hover.loveIcon {
+  color: aliceblue;
 }
-
-
-
-

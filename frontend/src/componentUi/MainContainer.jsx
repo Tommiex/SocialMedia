@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { FaAccusoft } from "react-icons/fa";
 import "./css/main.css";
-
+import Navbar from "./Navbar";
 import MenuContainer from "./MenuContainer";
 
 function MainContainer() {
@@ -18,8 +18,11 @@ function MainContainer() {
             <MenuContainer></MenuContainer>
           </div>
         </div>
-       </div>
-      <main></main>
+      </div>
+      <main>
+        {/* <Navbar></Navbar> */}
+        <div className="mainContainer"></div>
+      </main>
     </div>
   );
 }

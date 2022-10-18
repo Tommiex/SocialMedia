@@ -1,14 +1,15 @@
-import React from 'react';
+import React from "react";
 // import ReactDOM from 'react-dom';
-import { createRoot  } from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { createRoot } from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./componentUi/Navbar";
 
-import App from './App';
-import './index.css'
-const container = document.getElementById('root')
-const root = createRoot(container)
+import App from "./App";
+import "./index.css";
+const container = document.getElementById("root");
+const root = createRoot(container);
 root.render(
-    <Router>
-        <App/>
-    </Router>
-)
+  <Router>
+    <App />
+  </Router>
+);

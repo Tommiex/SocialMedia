@@ -1,0 +1,25 @@
+.Nav-box {
+  height: 50px;
+  padding-left: 40px;
+  display: flex;
+  background: rgb(255, 167, 167);
+}
+
+.searchBox {
+  /* padding-left: 145px; */
+  display: flex;
+  align-items: center;
+  margin-left: 130px;
+  
+}
+.search{
+    border-radius: 7px;
+    height: 30px;
+    border-color: rgba(240, 248, 255, 0);
+
+}
+@media only screen and (min-width: 1000px) {
+  .search {
+    width: 300px;
+  }
+}
