@@ -37,6 +37,7 @@ main {
 .logo {
   width: 70px;
   min-width: 40px;
+  height: 100px;
 }
 .iconStyle {
   width: 50px;

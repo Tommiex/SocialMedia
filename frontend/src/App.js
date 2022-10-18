@@ -14,7 +14,7 @@ function App() {
         <Route path='/registration/signup' element={<GmailSignUp/>}/>
         <Route path='/main' element={<MainContainer/>}/>
         <Route path='/login' element={<GoogleLogin/>}/>
-        {/* <Route path='/test' element={<Test/>}/> */}
+        <Route path='/test' element={<Test/>}/>
     </Routes>
   );
 }
