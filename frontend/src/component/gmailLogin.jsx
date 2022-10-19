@@ -7,7 +7,7 @@ const GmailLogin = () => {
   
   const navigate =  useNavigate()
  return(
-  <div>
+  <div className='gmailLogin'>
     <label>
       <span>Email</span> 
       <input
@@ -26,12 +26,8 @@ const GmailLogin = () => {
         id='txtPassword'
         ></input>
     </label>
-    <button className='button'id='btnLogin' onClick={Login} >Login</button>
-    <button
-    onFocus={() => navigate('/registration/signup')}
-    >
-      SignUp
-    </button>
+    <button className='button' id='btnLogin' onClick={Login}>Login</button>
+    <button onFocus={() => navigate('/registration/signup')}>SignUp</button>
   </div>
  )
 }
