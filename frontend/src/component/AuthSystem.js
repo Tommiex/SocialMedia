@@ -5,9 +5,6 @@ import {
   connectAuthEmulator,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signInWithRedirect,
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
@@ -16,70 +13,55 @@ import firebaseApp from '../FirebaseConfig';
 import { useNavigate, Redirect } from 'react-router-dom';
 
     
-function SignUp(){
-    const [user, setUser] = useState(null);
-    const email = document.querySelector("#txtEmail").value
-    const password= document.querySelector("#txtPassword").value
 
-    firebaseApp.auth().createUserWithEmailAndPassword( email, password)
-    .then((e) => {
-        setUser(true)
-        
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
 
-    }
-const Login = ()=>{
-    const [userLogin, setuserLogin] = useState(false)
-    const navigate= useNavigate()
-    const email = document.querySelector("#txtEmail").value
-    const password= document.querySelector("#txtPassword").value
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        if(user){
-            setuserLogin(true)
-        }else{
-            setuserLogin(false)
-        }
-        // ...
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-    });
+
+
+
+
+// export const AuthContext = createContext()
+// export const AuthContextProvider = ({children})=> {
     
-}
-
-
-const AuthContext = createContext()
-export const AuthContextProvider = ({children})=> {
-    const googleLogin = ()=>{
-        const provider = new GoogleAuthProvider();
-        const auth = getAuth()
-        signInWithPopup(auth ,provider)
-        
-    }
+//     const googleLogin = ()=>{
+//         const provider = new GoogleAuthProvider();
+//         const auth = getAuth()
+//         console.log('hi')
+//         signInWithPopup(auth ,provider)
+//         .then((result) => {
+//             // This gives you a Google Access Token. You can use it to access the Google API.
+//             const credential = GoogleAuthProvider.credentialFromResult(result);
+//             const token = credential.accessToken;
+//             // The signed-in user info.
+//             const user = result.user;
+            
+//             // ...
+//           }).catch((error) => {
+//             // Handle Errors here.
+//             const errorCode = error.code;
+//             const errorMessage = error.message;
+//             // The email of the user's account used.
+//             const email = error.customData.email;
+//             // The AuthCredential type that was used.
+//             const credential = GoogleAuthProvider.credentialFromError(error);
+//             // ...
+//           });
+//     }
     
-    return(
-        <AuthContext.Provider value={{googleLogin}}>
-            {children}
-        </AuthContext.Provider>
-    )
-}
-export const UserAuth =()=>{
-    return useContext(AuthContext)
-}
+//     return(
+//         <AuthContext.Provider value={{googleLogin}}>
+//             {children}
+//         </AuthContext.Provider>
+        
+//     )
+// }
+// export const UserAuth =()=>{
+//     return useContext(AuthContext)
+// }
 
 
 
 
 
-export default {SignUp , Login};
+
 
 

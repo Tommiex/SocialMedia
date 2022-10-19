@@ -1,23 +1,59 @@
+body{
+    background-color: rgb(255, 255, 255);
+}
+
 .Login{
-    width: 100vh ;
-    height: 100vh ;
+    
+    min-width: 100vh ;
+    min-height: 100vh ;
     display:flex;
-    justify-content: start;
+    justify-content: center;
     align-items:center;
-    margin: 0 auto;
     
 }
 .LoginState{
+    position:relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
-    width: 300px;
-    height: 400px;
-    margin: 0 auto;
+    border: 2px solid rgb(167, 255, 245);
+    min-width: 300px;
+    min-height: 400px;
     flex-direction: column;
+    background-color: rgba(12, 255, 255, 0.546);
+    gap: 20px;
+}
+
+.loginTitle{
+    position: absolute;
+    display: flex;
+    top: 10px;
+    height: 30px;
+    border: 2px solid blue;
+    align-items: center;
+    padding:0 5px 0;
+}
+
+
+  .imgLogin{
+    display: flex;
     
 }
-.gmailLogin{
-    height: 50%;
+.imgLogin>img{
+    max-height: 400px;
+    animation-name: opacity ;
+}
+
+@media only screen and (max-width: 650px) {
+    .imgLogin>img{
+        max-height: 500px;
+        animation-name: opacity ;
+        animation-duration: 1s;
+        animation-fill-mode: forwards
+    }
+   
+    @keyframes opacity {
+        from { opacity: 1; height: 400px;}
+        to{ opacity: 0; display: none; height: 0;} 
+    }
 }
