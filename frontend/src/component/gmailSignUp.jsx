@@ -8,8 +8,8 @@ const GmailSignUp = () => {
   const [password, setPassword] = useState(null)
   function SignUp(){
     const email = document.querySelector("#txtEmail").value
-    const pwd1= document.querySelector('#txtPasswordConfirmation').value
-    const pwd2 = document.querySelector('#txtPassword').value
+    const pwd1 = document.querySelector('#txtPassword').value
+    const pwd2= document.querySelector('#txtPasswordConfirmation').value
     if(pwd1 ==pwd2){
       setPassword(pwd2)
       console.log('SAME')
