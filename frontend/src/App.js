@@ -7,10 +7,11 @@ import GmailSignUp from "./component/gmailSignUp";
 import MainContainer from "./componentUi/MainContainer";
 import { GoogleLogin } from "./component";
 import Navbar from "./componentUi/Navbar";
+import "./componentUi/css/Navbar.css"
 function App() {
   return (
-    <div>
-      <Navbar></Navbar>
+    <div className="allComponent">
+      {/* <Navbar></Navbar> */}
       <Routes>
         <Route path="/registration" element={<Login />} />
         <Route path="/registration/signup" element={<GmailSignUp />} />

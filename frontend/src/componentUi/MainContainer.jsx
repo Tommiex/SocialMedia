@@ -3,7 +3,7 @@ import { FaAccusoft } from "react-icons/fa";
 import "./css/main.css";
 import Navbar from "./Navbar";
 import MenuContainer from "./MenuContainer";
-
+import Picture from "./Pictur";
 function MainContainer() {
   return (
     <div className="App">
@@ -20,8 +20,10 @@ function MainContainer() {
         </div>
       </div>
       <main>
-        {/* <Navbar></Navbar> */}
-        <div className="mainContainer"></div>
+        <Navbar></Navbar>
+        <div className="mainContainer">
+          <Picture></Picture>
+        </div>
       </main>
     </div>
   );
