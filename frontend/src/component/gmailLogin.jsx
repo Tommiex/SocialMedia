@@ -5,30 +5,36 @@ import GmailSiginUp from "./gmailSignUp";
 import Login from "./AuthSystem.js";
 
 import "./CSS/gmailLogin.css";
-export const alertPopup = createContext(alert)
+export const alertContext = React.createContext()
+export const LoginAlert = ()=>{
+  return <div className={alertProps} id="loginAlert"></div>
+}
 const GmailLogin = () => {
   // const{CheckUser} = useContext(AuthContext)
   // const { Login }= UserAuth()
   const navigate = useNavigate();
   
   const [alertProps, setAlert] = useState('loginAlert')
-  function CreateContext({Children}){
-    return (
-    <alertPopup.Provider value={alertProps}>
-      {Children}
-    </alertPopup.Provider>
+   function GetAlert(){
+    return(
+      <alertContext.Provider value={{alertProps}}>
+        <LoginAlert/>
+      </alertContext.Provider>
     )
   }
-  
+  const LoginEmail= ()=> {
+    
 
-  const Login= ()=> {
     const email = document.querySelector("#txtEmail").value
     const password= document.querySelector("#txtPassword").value
+
     const auth = getAuth();
+
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+
         if(user){
           setAlert('loginAlert active')
           navigate('/main') 
@@ -41,7 +47,8 @@ const GmailLogin = () => {
         const errorMessage = error.message;
     });
     
-}
+  }
+ 
   return (
     <div className="">
       <div className="gmailLogin">
@@ -69,9 +76,10 @@ const GmailLogin = () => {
           >
           SignUp
           </button>
-          <button className="button" id="btnLogin" onClick={Login}>
+          <button className="button" id="btnLogin" onClick={LoginEmail}>
             Login
           </button>
+          
         </div>
       </div>
       

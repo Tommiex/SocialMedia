@@ -6,13 +6,17 @@ import { GoogleAuthProvider } from 'firebase/auth'
 // import { AuthContextProvider} from '../component/AuthSystem.js'
 import img from '../assets/img.jpg'
 import './CSS/Login.css'
-import { alertPopup } from '../component/gmailLogin'
+import {LoginAlert } from '../component/gmailLogin'
+import { alertContext } from '../component/gmailLogin'
+
 const Login = () => {
-  const alertProps = useContext(alertPopup)
+  const alertProps = useContext(alertContext)
   console.log(alertProps)
+  
   return (
       <div className='Login'>
-        <div className={alertProps} id="loginAlert"></div>
+         
+        <LoginAlert/>
         <div className='imgLogin'>
           <img src={img}/>
         </div>
