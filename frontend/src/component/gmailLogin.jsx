@@ -5,23 +5,13 @@ import GmailSiginUp from "./gmailSignUp";
 import Login from "./AuthSystem.js";
 
 import "./CSS/gmailLogin.css";
-export const alertContext = React.createContext()
-export const LoginAlert = ()=>{
-  return <div className={alertProps} id="loginAlert"></div>
-}
+
 const GmailLogin = () => {
   // const{CheckUser} = useContext(AuthContext)
   // const { Login }= UserAuth()
   const navigate = useNavigate();
   
-  const [alertProps, setAlert] = useState('loginAlert')
-   function GetAlert(){
-    return(
-      <alertContext.Provider value={{alertProps}}>
-        <LoginAlert/>
-      </alertContext.Provider>
-    )
-  }
+ 
   const LoginEmail= ()=> {
     
 
@@ -36,7 +26,6 @@ const GmailLogin = () => {
         const user = userCredential.user;
 
         if(user){
-          setAlert('loginAlert active')
           navigate('/main') 
         } else{
           alert('Email or Password wrong')
