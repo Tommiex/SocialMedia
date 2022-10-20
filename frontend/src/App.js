@@ -6,6 +6,8 @@ import GmailSignUp from "./component/gmailSignUp";
 
 import MainContainer from "./componentUi/MainContainer";
 import { GoogleLogin } from "./component";
+import Navbar from "./componentUi/Navbar";
+import "./componentUi/css/Navbar.css"
 
 function App() {
   return (
