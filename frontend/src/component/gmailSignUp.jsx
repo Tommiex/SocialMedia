@@ -1,9 +1,30 @@
 import React from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import SignUp from './AuthSystem'
+import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
 import './CSS/gmailSignUp.css'  
 const GmailSignUp = () => {
   const navigate = useNavigate()
+  const [password, setPassword] = useState(null)
+  function SignUp(){
+    const email = document.querySelector("#txtEmail").value
+    const pwd1= document.querySelector('#txtPasswordConfirmation').value
+    const pwd2 = document.querySelector('#txtPassword').value
+    if(pwd1 ==pwd2){
+      setPassword(pwd2)
+      console.log('SAME')
+    }
+    const auth = getAuth()
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+
+}
   return (
     <div className='gmailSignUp'>
     <label>
@@ -27,10 +48,10 @@ const GmailSignUp = () => {
     <label>
       <span>Password confirmation</span> 
       <input
-        type='Password confirmation'
+        type='Password'
         placeholer='Password confirmation'
         className='authinput'
-        id='txtPassword confirmation'
+        id='txtPasswordConfirmation'
         ></input>
     </label>
     <div>
