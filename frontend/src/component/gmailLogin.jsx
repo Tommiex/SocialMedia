@@ -1,54 +1,49 @@
-import React, { useEffect, useState, useContext, createContext, Children } from "react";
+import React, {
+  useEffect,
+  useState,
+  useContext,
+  createContext,
+  Children,
+} from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { getAuth ,signInWithEmailAndPassword} from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import GmailSiginUp from "./gmailSignUp";
 import Login from "./AuthSystem.js";
 
 import "./CSS/gmailLogin.css";
-export const alertContext = React.createContext()
-export const LoginAlert = ()=>{
-  return <div className={alertProps} id="loginAlert"></div>
-}
-const GmailLogin = () => {
+
+function GmailLogin() {
   // const{CheckUser} = useContext(AuthContext)
   // const { Login }= UserAuth()
+  const [userCheck, setUserCheck] = useState("sss");
   const navigate = useNavigate();
-  
-  const [alertProps, setAlert] = useState('loginAlert')
-   function GetAlert(){
-    return(
-      <alertContext.Provider value={{alertProps}}>
-        <LoginAlert/>
-      </alertContext.Provider>
-    )
-  }
-  const LoginEmail= ()=> {
-    
 
-    const email = document.querySelector("#txtEmail").value
-    const password= document.querySelector("#txtPassword").value
+  async function LoginEmail() {
+    const email = document.querySelector("#txtEmail").value;
+    const password = document.querySelector("#txtPassword").value;
 
     const auth = getAuth();
 
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // Signed in 
+      .then((userCredential) => {
+        // Signed in
         const user = userCredential.user;
+        setUserCheck(user.accessToken);
+        console.log(user);
+        console.log(userCheck);
 
-        if(user){
-          setAlert('loginAlert active')
-          navigate('/main') 
-        } else{
-          alert('Email or Password wrong')
+        if (user) {
+          navigate("/main");
+        } else {
+          alert("Email or Password wrong");
         }
-    })
-    .catch((error) => {
+      })
+      .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-    });
-    
+      });
   }
- 
+
   return (
     <div className="">
       <div className="gmailLogin">
@@ -67,24 +62,20 @@ const GmailLogin = () => {
             type="Password"
             placeholer="Password"
             className="authinput"
-            id="txtPassword" 
+            id="txtPassword"
           ></input>
         </label>
         <div className="btnState">
-          <button 
-          onFocus={() => navigate("/registration/signup")}
-          >
-          SignUp
+          <button onFocus={() => navigate("/registration/signup")}>
+            SignUp
           </button>
           <button className="button" id="btnLogin" onClick={LoginEmail}>
             Login
           </button>
-          
         </div>
       </div>
-      
     </div>
   );
-};
+}
 
 export default GmailLogin;
