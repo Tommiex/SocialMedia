@@ -17,10 +17,20 @@ function GmailLogin() {
   // const { Login }= UserAuth()
   const [userCheck, setUserCheck] = useState("sss");
   const navigate = useNavigate();
+  
+  const [alertProps, setAlert] = useState('loginAlert')
+   function GetAlert(){
+    return(
+      <alertContext.Provider value={{alertProps}}>
+        <LoginAlert/>
+      </alertContext.Provider>
+    )
+  }
+  const LoginEmail= ()=> {
+    
 
-  async function LoginEmail() {
-    const email = document.querySelector("#txtEmail").value;
-    const password = document.querySelector("#txtPassword").value;
+    const email = document.querySelector("#txtEmail").value
+    const password= document.querySelector("#txtPassword").value
 
     const auth = getAuth();
 
@@ -32,10 +42,11 @@ function GmailLogin() {
         console.log(user);
         console.log(userCheck);
 
-        if (user) {
-          navigate("/main");
-        } else {
-          alert("Email or Password wrong");
+        if(user){
+          setAlert('loginAlert active')
+          navigate('/main') 
+        } else{
+          alert('Email or Password wrong')
         }
       })
       .catch((error) => {
