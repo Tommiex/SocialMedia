@@ -19,16 +19,17 @@ const LogIntt = () => {
       await signInWithEmailAndPassword(auth, email, password);
       // const token = localStorage.getItem(constructor);
       // console.log(token)
+      navigate("/main");
     } catch (error) {
       alert(error);
     }
   };
 
-const currentUser = useContext(AuthContext)
+  const currentUser = useContext(AuthContext);
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/dashboard");
+      navigate("/main");
     }
   }, [currentUser]);
 
