@@ -13,10 +13,9 @@ const Login = () => {
   // const alertProps = useContext(alertContext)
   // console.log(alertProps)
   
-  return (
+//   return (
       <div className='Login'>
          
-        {/* <LoginAlert/> */}
         <div className='imgLogin'>
           <img src={img}/>
         </div>
@@ -32,4 +31,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+// export default Login;

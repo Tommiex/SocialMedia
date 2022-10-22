@@ -5,10 +5,10 @@ import "../component/CSS/gmailLogin.css";
 import "../container/CSS/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import img from "../assets/img.jpg";
-import { useContext } from "react";
-import { AuthContext } from "./auth";
-const ReLogin = ({ handleSubmit }) => {
-  const navigate = useNavigate();
+
+
+import { useState } from "react";
+const ReLogin = ({ onSubmit }) => {
   const onFinish = (values) => {
     console.log("Success:", values);
     handleSubmit(values);
