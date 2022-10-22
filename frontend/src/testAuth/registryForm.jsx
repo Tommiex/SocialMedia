@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { Form, Input, Button } from "antd";
 import "../component/CSS/gmailSignUp.css";
 
-const ReSignup = ({ onSubmi }) => {
+const ReSignup = ({ onSubmit }) => {
   const navigate = useNavigate();
   const onFinish = (values) => {
     console.log("Success:", values);
-    onSubmi(values);
+    onSubmit(values);
   };
 
   const onFinishFailed = (errorInfo) => {

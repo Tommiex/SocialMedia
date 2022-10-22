@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
-      console.log(currentUser)
     });
   }, []);
 

@@ -19,13 +19,13 @@ function GmailLogin() {
   const navigate = useNavigate();
   
   const [alertProps, setAlert] = useState('loginAlert')
-   function GetAlert(){
-    return(
-      <alertContext.Provider value={{alertProps}}>
-        <LoginAlert/>
-      </alertContext.Provider>
-    )
-  }
+  //  function GetAlert(){
+  //   return(
+  //     <alertContext.Provider value={{alertProps}}>
+  //       <LoginAlert/>
+  //     </alertContext.Provider>
+  //   )
+  // }
   const LoginEmail= ()=> {
     
 

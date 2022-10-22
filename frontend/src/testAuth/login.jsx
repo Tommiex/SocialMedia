@@ -4,11 +4,11 @@ import { AuthContext } from "./auth";
 import { auth } from "../FirebaseConfig";
 import ReLogin from "./Loginform";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const LogIntt = () => {
   const navigate = useNavigate();
-
+  const [nav, setNav] = useState(false)
   const handleSubmit = async (values) => {
     const { email, password } = values;
     // const constructor= (userId)=>{
@@ -19,22 +19,28 @@ const LogIntt = () => {
       await signInWithEmailAndPassword(auth, email, password);
       // const token = localStorage.getItem(constructor);
       // console.log(token)
+      setNav(true)
+      navigate("/main");
+
     } catch (error) {
       alert(error);
     }
   };
-
-const currentUser = useContext(AuthContext)
+  
+  const currentUser = useContext(AuthContext)
 
   useEffect(() => {
-    if (currentUser) {
-      navigate("/dashboard");
+    if (currentUser && nav) {
+      navigate("/main");
     }
-  }, [currentUser]);
-
+  }, []);
+  console.log(currentUser)
+  
   return (
     <div>
-      <ReLogin onSubmit={handleSubmit}></ReLogin>
+
+        <ReLogin handleSubmit={handleSubmit}></ReLogin>
+   
     </div>
   );
 };
