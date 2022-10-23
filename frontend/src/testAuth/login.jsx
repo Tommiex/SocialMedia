@@ -20,7 +20,7 @@ const LogIntt = () => {
       // const token = localStorage.getItem(constructor);
       // console.log(token)
       setNav(true)
-      navigate("/main");
+      navigate("/main")
 
     } catch (error) {
       alert(error);
@@ -33,7 +33,7 @@ const LogIntt = () => {
     if (currentUser && nav) {
       navigate("/main");
     }
-  }, []);
+  }, [currentUser]);
   console.log(currentUser)
   
   return (

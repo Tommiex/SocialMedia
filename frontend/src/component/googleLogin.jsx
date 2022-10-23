@@ -6,7 +6,6 @@ import { signInWithPopup, getAuth, GoogleAuthProvider } from "firebase/auth";
 // import { UserAuth} from './AuthSystem'
 
 import "./CSS/googleLogin.css";
-import GmailLogin from "./gmailLogin";
 const GoogleLogin = () => {
   // const { googleLogin } = UserAuth()
   const navigate = useNavigate();

@@ -12,12 +12,31 @@ const GmailSignUp = () => {
     const pwd2 = document.querySelector("#txtPasswordConfirmation").value;
     if (pwd1 == pwd2) {
       setPassword(pwd2);
-      console.log("SAME");
+      console.log("password");
+      
     }
+    // const password =()=>{
+    //   if (pwd1 == pwd2) {
+    //     // setPassword(pwd2);
+    //     console.log("password");
+    //     return pwd1
+    //   }
+    // }
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
+    // const handleSignUp = async (values)=>{
+    //   const email = document.querySelector("#txtEmail").value;
+    //   const pwd1 = document.querySelector("#txtPassword").value;
+    //   try {
+    //     await createUserWithEmailAndPassword(auth, email, password)
+    //   }catch (error){
+    //     alert(error)
+    //   }
+    // }
+    createUserWithEmailAndPassword(auth, email, pwd1)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log(password)
+        navigate('/main')
       })
       .catch((error) => {
         const errorCode = error.code;
