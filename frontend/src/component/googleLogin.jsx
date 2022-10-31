@@ -5,11 +5,18 @@
 // import { signInWithPopup, getAuth, GoogleAuthProvider } from "firebase/auth";
 // // import { UserAuth} from './AuthSystem'
 
+<<<<<<< HEAD
 // import "./CSS/googleLogin.css";
 // import GmailLogin from "./gmailLogin";
 // const GoogleLogin = () => {
 //   // const { googleLogin } = UserAuth()
 //   const navigate = useNavigate();
+=======
+import "./CSS/googleLogin.css";
+const GoogleLogin = () => {
+  // const { googleLogin } = UserAuth()
+  const navigate = useNavigate();
+>>>>>>> 93c6d1acbf5ed28143f5c9dcd19d9aa95028831c
 
 //   const handleGoogleLogin = () => {
 //     const provider = new GoogleAuthProvider();

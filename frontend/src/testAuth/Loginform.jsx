@@ -3,21 +3,27 @@ import { Button, Checkbox, Form, Input } from "antd";
 import "../component/CSS/gmailSignUp.css";
 import "../component/CSS/gmailLogin.css";
 import "../container/CSS/Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import img from "../assets/img.jpg";
-
-
 import { useState } from "react";
-const ReLogin = ({ onSubmit }) => {
+
+
+const ReLogin = ({ handleSubmit }) => {
   const onFinish = (values) => {
+<<<<<<< HEAD
     // console.log("Success:", values);
     onSubmit(values);
+=======
+    console.log("Success:", values);
+    handleSubmit(values);
+>>>>>>> 93c6d1acbf5ed28143f5c9dcd19d9aa95028831c
   };
 
+  
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-
+  
   return (
     <div className="Login">
       <section>

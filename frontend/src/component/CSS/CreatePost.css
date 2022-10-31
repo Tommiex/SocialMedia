@@ -1,0 +1,12 @@
+.createPost{
+    margin: 20px;
+    display: flex;
+    gap: 10px;
+}
+.image>img{
+    height: 200px;
+    width: 200px;
+}
+.formInput{
+    width: 40%;
+}
