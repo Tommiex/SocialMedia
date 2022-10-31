@@ -1,8 +1,21 @@
 import React from 'react'
-import Navbar from "./componentUi/Navbar";
+import { Routes, Route} from 'react-router-dom'
+import Navbar from "../componentUi/Navbar";
+import Feed from '../component/Feed.jsx';
+import UserProfile from '../component/UserProfile';
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <div>
+        <Navbar/>
+      </div>
+      <div >
+        <Routes >
+          <Route path="/user-profile" element={<UserProfile/>}></Route>
+          <Route path='/*' element={<Feed/>}></Route>
+        </Routes>
+      </div>
+    </div>
   )
 }
 

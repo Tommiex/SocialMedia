@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAuth ,onAuthStateChanged} from "firebase/auth";
-import {getFirestore, collection, getDoc, getDocs} from 'firebase/firestore'
+import { getAuth } from "firebase/auth";
+import {getFirestore} from 'firebase/firestore'
+import { getStorage } from "firebase/storage";
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyBphU2xgvnA23A4DYHWFYQary3CjWr0Utg",
@@ -13,4 +14,4 @@ const firebaseApp = initializeApp({
 export default firebaseApp;
 export const auth = getAuth(firebaseApp);
 export const db = getFirestore(firebaseApp)
-
+export const storage = getStorage(firebaseApp)

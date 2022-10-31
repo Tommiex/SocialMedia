@@ -36,7 +36,7 @@ const GmailSignUp = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(password)
-        navigate('/main')
+        navigate('/')
       })
       .catch((error) => {
         const errorCode = error.code;

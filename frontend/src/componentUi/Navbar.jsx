@@ -11,7 +11,7 @@ function Navbar() {
   const auth = getAuth();
   function logout() {
     signOut(auth);
-    navigate('/logintt')
+    navigate('/registration')
     console.log(user)
   }
   return (
