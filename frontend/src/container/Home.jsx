@@ -21,7 +21,7 @@ const Home = () => {
         </Routes>
       </div>
     </div>
-  )
+  ) 
 }
 
 export default Home

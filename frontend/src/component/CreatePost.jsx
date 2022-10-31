@@ -10,7 +10,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { db, storage } from "../FirebaseConfig";
-import { userInputs } from "../formSource";
+import { postInputs } from "../formSource";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 const CreatePost = () => {
   const [data, setData] = useState({});
@@ -96,7 +96,7 @@ const CreatePost = () => {
             onChange={(e) => setFile(e.target.files[0])}
           />
         </div>
-        {userInputs.map((input) => (
+        {postInputs.map((input) => (
           <div className="formInput" key={input.id}>
             <label>{input.label}</label>
             <input
