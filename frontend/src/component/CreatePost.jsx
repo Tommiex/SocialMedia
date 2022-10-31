@@ -15,6 +15,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 const CreatePost = () => {
   const [data, setData] = useState({});
   const [file, setFile] = useState("");
+  const [perc, setPerc] = useState(null)
 
   const currentUser = useContext(AuthContext);
 
@@ -32,6 +33,7 @@ const CreatePost = () => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + "% done");
+          setPerc(progress)
           switch (snapshot.state) {
             case "paused":
               console.log("Upload is paused");
@@ -64,7 +66,7 @@ const CreatePost = () => {
     setData({ ...data, [id]: value });
   };
   console.log(data);
-  
+
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
@@ -113,7 +115,13 @@ const CreatePost = () => {
           <div>wrtie ur description</div>
         </div>
           */}
-        <button type="submit">post</button>
+        <button 
+          disabled={perc !== null && perc <100} 
+          type="submit"
+          className="postBtn"
+        >
+          post
+        </button>
       </form>
     </div>
   );

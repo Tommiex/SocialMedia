@@ -10,3 +10,10 @@
 .formInput{
     width: 40%;
 }
+.postBtn{
+    background-color: blue;
+
+}
+.postBtn:disabled{
+    background-color: black;
+}
