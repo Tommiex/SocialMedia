@@ -2,7 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { Form, Input, Button } from "antd";
 import "../component/CSS/gmailSignUp.css";
 
+<<<<<<< HEAD
+const ReSignup = ({onSubmit}) => {
+=======
 const ReSignup = ({ onSubmit }) => {
+>>>>>>> 93c6d1acbf5ed28143f5c9dcd19d9aa95028831c
   const navigate = useNavigate();
   const onFinish = (values) => {
     console.log("Success:", values);

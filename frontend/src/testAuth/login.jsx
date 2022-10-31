@@ -8,11 +8,16 @@ import { useEffect, useState } from "react";
 
 const LogIntt = () => {
   const navigate = useNavigate();
+<<<<<<< HEAD
+  const currentUser = useContext(AuthContext);
+=======
   const [nav, setNav] = useState(false)
+>>>>>>> 93c6d1acbf5ed28143f5c9dcd19d9aa95028831c
   const handleSubmit = async (values) => {
     const { email, password } = values;
     // const constructor= (userId)=>{
     //   this.userId =auth().currentUser.uid
+    console.log(currentUser)
     // }
 
     try {
@@ -26,6 +31,18 @@ const LogIntt = () => {
       alert(error);
     }
   };
+<<<<<<< HEAD
+
+  
+  
+
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     navigate("/main");
+  //   }
+  // }, [currentUser]);
+
+=======
   
   const currentUser = useContext(AuthContext)
 
@@ -36,6 +53,7 @@ const LogIntt = () => {
   }, [currentUser]);
   console.log(currentUser)
   
+>>>>>>> 93c6d1acbf5ed28143f5c9dcd19d9aa95028831c
   return (
     <div>
 
