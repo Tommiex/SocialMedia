@@ -8,11 +8,12 @@ import { useEffect } from "react";
 
 const LogIntt = () => {
   const navigate = useNavigate();
-
+  const currentUser = useContext(AuthContext);
   const handleSubmit = async (values) => {
     const { email, password } = values;
     // const constructor= (userId)=>{
     //   this.userId =auth().currentUser.uid
+    console.log(currentUser)
     // }
 
     try {
@@ -25,13 +26,14 @@ const LogIntt = () => {
     }
   };
 
-  const currentUser = useContext(AuthContext);
+  
+  
 
-  useEffect(() => {
-    if (currentUser) {
-      navigate("/main");
-    }
-  }, [currentUser]);
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     navigate("/main");
+  //   }
+  // }, [currentUser]);
 
   return (
     <div>

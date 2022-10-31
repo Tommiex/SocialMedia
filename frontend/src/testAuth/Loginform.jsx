@@ -10,7 +10,7 @@ import img from "../assets/img.jpg";
 import { useState } from "react";
 const ReLogin = ({ onSubmit }) => {
   const onFinish = (values) => {
-    console.log("Success:", values);
+    // console.log("Success:", values);
     onSubmit(values);
   };
 
