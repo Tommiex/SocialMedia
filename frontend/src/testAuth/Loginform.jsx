@@ -10,13 +10,8 @@ import { useState } from "react";
 
 const ReLogin = ({ handleSubmit }) => {
   const onFinish = (values) => {
-<<<<<<< HEAD
-    // console.log("Success:", values);
-    onSubmit(values);
-=======
     console.log("Success:", values);
     handleSubmit(values);
->>>>>>> 93c6d1acbf5ed28143f5c9dcd19d9aa95028831c
   };
 
   

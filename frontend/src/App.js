@@ -3,52 +3,23 @@ import { Route, Routes } from "react-router-dom";
 import Test from "./data/dataTest";
 import GmailSignUp from "./component/gmailSignUp";
 
-import MainContainer from "./componentUi/MainContainer";
-<<<<<<< HEAD
-import { GoogleLogin } from "./component";
-import Navbar from "./componentUi/Navbar";
-import "./componentUi/css/Navbar.css";
-import ReSignup from "./testAuth/registryForm";
-import ReLogin from "./testAuth/Loginform";
-import Login from "./container/Login";
-import LogIntt from "./testAuth/login";
-import RegistrywithEmail from "./testAuth/registry";
-import { AuthProvider } from "./testAuth/auth";
-=======
-import "./componentUi/css/Navbar.css"
 import Login from "./container/Login.jsx";
 import {AuthProvider} from "./testAuth/auth";
 import Home from "./container/Home";
 
 import CreatePost from "./component/CreatePost";
 
->>>>>>> 93c6d1acbf5ed28143f5c9dcd19d9aa95028831c
 function App() {
   return (
     <div>
       <AuthProvider>
-<<<<<<< HEAD
-      <Routes>
-        {/* <Route path="/registration" element={<Login />} /> */}
-        {/* <Route path="/registration/signup" element={<GmailSignUp />} /> */}
-        <Route path="/main" element={<MainContainer />} />
-        {/* <Route path="/login" element={<GoogleLogin />} /> */}
-        <Route path="/test" element={<Test />} />
-        <Route path="/signup" element={<RegistrywithEmail />} />
-        <Route path="/relogint" element={<ReLogin />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/logintt" element={<LogIntt />} />
-      </Routes>
-=======
         <Routes>
           <Route path='/*' element={<Home/>}/>
           <Route path="/registration" element={<Login />} />
           <Route path="/registration/signup" element={<GmailSignUp />} />
-          <Route path="/home" element={<MainContainer />} />
           <Route path="/test" element={<Test />} />
           <Route path="/createPost" element={<CreatePost/>}/>
         </Routes>
->>>>>>> 93c6d1acbf5ed28143f5c9dcd19d9aa95028831c
       </AuthProvider>
     </div>
   );

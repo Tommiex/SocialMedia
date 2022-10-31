@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import { GoogleLogin } from "../component";
+import { GoogleLogin} from "../component";
 import { GoogleAuthProvider } from "firebase/auth";
 import LogIntt from "../testAuth/login";
 // import { AuthContextProvider} from '../component/AuthSystem.js'

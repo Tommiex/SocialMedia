@@ -1,4 +1,4 @@
-import "./css/Navbar.css";
+import "./CSS/Navbar.css";
 import { FaSearch } from "react-icons/fa";
 import { getAuth, signOut } from "firebase/auth";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -12,7 +12,6 @@ function Navbar() {
   function logout() {
     signOut(auth);
     navigate('/registration')
-    console.log(user)
   }
   return (
     <div className="Nav-box">

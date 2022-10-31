@@ -1,14 +1,19 @@
 import React from 'react'
 import { Routes, Route} from 'react-router-dom'
-import Navbar from "../componentUi/Navbar";
-import Feed from '../component/Feed.jsx';
-import UserProfile from '../component/UserProfile';
+import { Navbar, Feed, UserProfile} from '../component'
+import MenuContainer from '../component/MenuContainer'
+
 const Home = () => {
   return (
     <div>
       <div>
         <Navbar/>
       </div>
+      <div className="subMenu">
+          <div>
+            <MenuContainer></MenuContainer>
+          </div>
+        </div>
       <div >
         <Routes >
           <Route path="/user-profile" element={<UserProfile/>}></Route>

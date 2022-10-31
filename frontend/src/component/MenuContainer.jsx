@@ -2,7 +2,7 @@ import { FaAccusoft } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 
-import "./css/main.css";
+import "./CSS/MenuContainer.css";
 
 function MenuContainer() {
   return (
