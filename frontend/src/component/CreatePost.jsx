@@ -5,9 +5,10 @@ import {
   doc,
   setDoc,
   addDoc,
-  collection,
+  getDocs,
   timestamp,
   serverTimestamp,
+  collection,
 } from "firebase/firestore";
 import { db, storage } from "../FirebaseConfig";
 import { postInputs } from "../formSource";
@@ -87,13 +88,17 @@ const CreatePost = () => {
   const handleAddTest = async (e)=>{
     e.preventDefault();
     try{
-      const collection = ()=>{
-        setDoc(doc(db, "capital", "GA"), 
-      {
-        name:'USer'
-      });
-      }
-      await setDoc(doc(db, "cities", "LA"),collection);
+      var num = 0
+      const newBooksRef = doc(db,"apple","ant", "bookshelf", "post"+num)
+      const querySnapshot = await getDocs(collection(db,"apple","ant", "bookshelf"));
+      querySnapshot.map((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      num++
+      console.log(num)
+    }
+    );
+     const test = await setDoc(newBooksRef,{number: num})
     }catch(err){
       console.log(err)
     }
