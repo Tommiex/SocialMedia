@@ -32,9 +32,15 @@ export const userInputs = [
         placeholder: 'Password',
     },
     {
-        id:'username',
-        label:'Username',
-        type: 'text',
-        placeholder: 'Username',
+        id:'passwordConfirmation',
+        label:'Password Confirmation',
+        type: 'password',
+        placeholder: 'Confirm password',
+    },
+    {
+        id:'email',
+        label:'Email',
+        type: 'mail',
+        placeholder: 'Email',
     },
 ]

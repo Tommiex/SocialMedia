@@ -67,6 +67,7 @@ const CreatePost = () => {
   };
   console.log(data);
 
+  //Real use
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
@@ -82,10 +83,27 @@ const CreatePost = () => {
     }
   };
 
+  // Test DataBase
+  const handleAddTest = async (e)=>{
+    e.preventDefault();
+    try{
+      const collection = ()=>{
+        setDoc(doc(db, "capital", "GA"), 
+      {
+        name:'USer'
+      });
+      }
+      await setDoc(doc(db, "cities", "LA"),collection);
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+
   // RETURN ↓↓
   return (
     <div className="createPost">
-      <form onSubmit={handleAdd}>
+      <form onSubmit={handleAddTest}>
         <div className="formInput">
           <label htmlFor="file">
             Image: <div></div>
