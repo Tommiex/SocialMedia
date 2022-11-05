@@ -1,6 +1,6 @@
 import express from "express";
-import { user } from "./serverConfig.js";
-
+import { datatest } from "./serverConfig.js";
+// import { user } from "./serverConfig.js";
 
 const server = express();
 
@@ -13,9 +13,13 @@ server.use(function (req, res, next) {
   next();
 });
 server.get("/", (req, res) => {
-  res.send(user);
+  res.send(datatest);
+  console.log(datatest)
+  // res.send(user);
+  // console.log(user)
 });
 
 server.listen(9050, () => {
   console.log("run server 9050");
+  
 });
