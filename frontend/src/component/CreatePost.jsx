@@ -84,18 +84,17 @@ const CreatePost = () => {
     }
   };
 
+  var num = 0
   // Test DataBase
   const handleAddTest = async (e)=>{
     e.preventDefault();
     try{
-      var num = 0
       const newBooksRef = doc(db,"apple","ant", "bookshelf", "post"+num)
       const querySnapshot = await getDocs(collection(db,"apple","ant", "bookshelf"));
-      querySnapshot.map((doc) => {
+      querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
-      num++
-      console.log(num)
+      console.log(doc)
     }
     );
      const test = await setDoc(newBooksRef,{number: num})
