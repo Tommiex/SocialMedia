@@ -21,17 +21,12 @@ const CreatePost = () => {
   const [data, setData] = useState({});
   const [file, setFile] = useState("");
   const [perc, setPerc] = useState(null);
-  const [postNumber, setPostNumber] = useState("");
+  const [postNumber, setPostNumber] = useState(null);
   var num = 0;
   var postN = 0;
 
   const currentUser = useContext(AuthContext);
 
-  //  await querySnapshot.forEach((doc) => {
-  //   // doc.data() is never undefined for query doc snapshots
-  //   console.log(doc.id, " => ", doc.data());
-  //   num++;
-  //   console.log(num);
 
   // useEffect ↓↓ upload Image to Storage
   useEffect(() => {
@@ -84,49 +79,38 @@ const CreatePost = () => {
   //Real use
   const handleAddTest = async (e) => {
     e.preventDefault();
-    const newBooksRef = doc(db, "apple", "ant", currentUser.currentUser.uid, "books");
-    const res = getDocs(db, "apple", currentUser.currentUser.uid ,"post", "books");
-    axios
-      .get("http://localhost:9050/", { crossdomain: true })
-      .then((response) => {
-        setPostNumber(response.data.map((x) => x.number));
-        console.log(response.data.map((x) => x.number));
-        document.getElementById("result").innerHTML = postNumber;
-      });
+    
     try {
-      // const doc = await getDocFromCache(newBooksRef);
-      const newBooksNumber = newBooksRef;
-      const querySnapshot = await getDocs(
-        collection(db, "apple", "ant", "bookshelf")
-      );
-      // const num = newBooksNumber._key.path.segments.length;
-      // console.log(num + 1);
-      // console.log(newBooksNumber);
-      // console.log(doc.data());
-
-      // querySnapshot.forEach((doc) => {
-      //   // doc.data() is never undefined for query doc snapshots
-      //   console.log(doc.id, " => ", doc.data());
-      // });
-      
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const handleAdd = async (e) => {
-    e.preventDefault();
-
-    try {
-
-
-      const res = await setDoc(
-        doc(db,"user's post",currentUser.currentUser.uid,"post", "post"), //collection will auto generate ID, Doc can order ID
+      await setDoc(
+        doc(db,"user's post",currentUser.currentUser.uid,"post", "post"+postNumber.length), //collection will auto generate ID, Doc can order ID
         {
           ...data,
           timeStamp: serverTimestamp(),
         }
       );
-      console.log("success");
+      
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+  const handleAdd = async (e) => {
+    e.preventDefault();
+    try {
+      const dataCol = collection(db,"user's post",currentUser.currentUser.uid,"post");
+      const dataSnapshot = await getDocs(dataCol);
+      const dataList = dataSnapshot.docs.map(doc => doc.data());
+      setPostNumber((dataList.length)+1)
+      console.log(postNumber)
+      await setDoc(
+        doc(db,"user's post",currentUser.currentUser.uid,"post", "post"+(postNumber)), //collection will auto generate ID, Doc can order ID
+        {
+          ...data,
+          timeStamp: serverTimestamp(),
+        }
+      );
+      console.log(currentUser.currentUser.uid);
 
       // console.log(Object.keys())
     } catch (err) {
@@ -134,24 +118,6 @@ const CreatePost = () => {
     }
   };
 
-  var num = 0
-  // Test DataBase
-  // const handleAddTest = async (e)=>{
-  //   e.preventDefault();
-  //   try{
-  //     const newBooksRef = doc(db,"apple","ant", "bookshelf", "post"+num)
-  //     const querySnapshot = await getDocs(collection(db,"apple","ant", "bookshelf"));
-  //     querySnapshot.forEach((doc) => {
-  //       // doc.data() is never undefined for query doc snapshots
-  //     console.log(doc.id, " => ", doc.data());
-  //     console.log(doc)
-  //   }
-  //   );
-  //    const test = await setDoc(newBooksRef,{number: num})
-  //   }catch(err){
-  //     console.log(err)
-  //   }
-  // }
   // RETURN ↓↓
   return (
     <div className="createPost">
