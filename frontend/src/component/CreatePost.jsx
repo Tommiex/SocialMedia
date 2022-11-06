@@ -27,9 +27,16 @@ const CreatePost = () => {
 
   const currentUser = useContext(AuthContext);
 
+  async function fetchData() {
+    const dataCol = collection(db,"user's post",currentUser.currentUser.uid,"post");
+    const dataSnapshot = await getDocs(dataCol);
+    const dataList = dataSnapshot.docs.map(doc => doc.data());
+    setPostNumber((dataList.length)+1)
+  }
 
   // useEffect ↓↓ upload Image to Storage
   useEffect(() => {
+    fetchData()
     const uploadFile = () => {
       const name = new Date().getTime() + "+" + file.name;
       console.log(name);
@@ -98,10 +105,7 @@ const CreatePost = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      const dataCol = collection(db,"user's post",currentUser.currentUser.uid,"post");
-      const dataSnapshot = await getDocs(dataCol);
-      const dataList = dataSnapshot.docs.map(doc => doc.data());
-      setPostNumber((dataList.length)+1)
+      
       console.log(postNumber)
       await setDoc(
         doc(db,"user's post",currentUser.currentUser.uid,"post", "post"+(postNumber)), //collection will auto generate ID, Doc can order ID
