@@ -105,10 +105,10 @@ const CreatePost = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      
+      setPostNumber(postNumber+1)
       console.log(postNumber)
       await setDoc(
-        doc(db,"user's post",currentUser.currentUser.uid,"post", "post"+(postNumber)), //collection will auto generate ID, Doc can order ID
+        doc(db,"user's post",currentUser.currentUser.uid,"post", "post"+postNumber), //collection will auto generate ID, Doc can order ID
         {
           ...data,
           timeStamp: serverTimestamp(),
