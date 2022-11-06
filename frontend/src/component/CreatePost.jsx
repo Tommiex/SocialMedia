@@ -5,7 +5,6 @@ import axios from "axios";
 import {
   doc,
   setDoc,
-  getDocs,
   addDoc,
   getDocs,
   timestamp,
