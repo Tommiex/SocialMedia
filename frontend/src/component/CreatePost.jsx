@@ -21,7 +21,7 @@ const CreatePost = () => {
   const [data, setData] = useState({});
   const [file, setFile] = useState("");
   const [perc, setPerc] = useState(null);
-  const [dataa, setDataa] = useState("");
+  const [postNumber, setPostNumber] = useState("");
   var num = 0;
   var postN = 0;
 
@@ -84,14 +84,14 @@ const CreatePost = () => {
   //Real use
   const handleAddTest = async (e) => {
     e.preventDefault();
-    const newBooksRef = doc(db, "apple", "ant", "bookshelf", "books");
+    const newBooksRef = doc(db, "apple", "ant", currentUser.currentUser.uid, "books");
+    const res = getDocs(db, "apple", currentUser.currentUser.uid ,"post", "books");
     axios
       .get("http://localhost:9050/", { crossdomain: true })
       .then((response) => {
-        setDataa(response.data.map((x) => x.number));
+        setPostNumber(response.data.map((x) => x.number));
         console.log(response.data.map((x) => x.number));
-        document.getElementById("result").innerHTML = dataa;
-        Object.keys(dataa).length
+        document.getElementById("result").innerHTML = postNumber;
       });
     try {
       // const doc = await getDocFromCache(newBooksRef);
@@ -115,46 +115,18 @@ const CreatePost = () => {
   };
   const handleAdd = async (e) => {
     e.preventDefault();
-    postN++;
 
     try {
-      const newBooksRef = doc(
-        db,
-        "user's post",
-        currentUser.currentUser.uid,
-        "post",
-        "post"
-      );
 
-      const newBooksNumber = newBooksRef;
-      const num1 = newBooksNumber._key.path.segments.length;
-
-      console.log(num1);
-      const querySnapshot = await getDocs(
-        collection(
-          db,
-          "user's post",
-          currentUser.currentUser.uid,
-          "post",
-          "post"
-        )
-      );
 
       const res = await setDoc(
-        doc(
-          db,
-          "user's post",
-          currentUser.currentUser.uid,
-          "post",
-          "post" + postN
-        ), //collection will auto generate ID, Doc can order ID
-
+        doc(db,"user's post",currentUser.currentUser.uid,"post", "post"), //collection will auto generate ID, Doc can order ID
         {
           ...data,
           timeStamp: serverTimestamp(),
         }
       );
-      console.log("ssuccess");
+      console.log("success");
 
       // console.log(Object.keys())
     } catch (err) {
@@ -164,46 +136,26 @@ const CreatePost = () => {
 
   var num = 0
   // Test DataBase
-<<<<<<< Updated upstream
-  const handleAddTest = async (e)=>{
-    e.preventDefault();
-    try{
-      const newBooksRef = doc(db,"apple","ant", "bookshelf", "post"+num)
-      const querySnapshot = await getDocs(collection(db,"apple","ant", "bookshelf"));
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-      console.log(doc)
-    }
-    );
-     const test = await setDoc(newBooksRef,{number: num})
-    }catch(err){
-      console.log(err)
-    }
-  }
-=======
-  // const handleAddTest = async (e) => {
+  // const handleAddTest = async (e)=>{
   //   e.preventDefault();
-  //   try {
-
-  //     const collection1 = (valueUs) => {
-  //       setDoc(doc(db, "capital", "GA"), {
-  //         name: "USer",
-  //       });
-  //     };
-  //     await setDoc(doc(db, "cities", "LA","asd","www"), {
->>>>>>> Stashed changes
-
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
+  //   try{
+  //     const newBooksRef = doc(db,"apple","ant", "bookshelf", "post"+num)
+  //     const querySnapshot = await getDocs(collection(db,"apple","ant", "bookshelf"));
+  //     querySnapshot.forEach((doc) => {
+  //       // doc.data() is never undefined for query doc snapshots
+  //     console.log(doc.id, " => ", doc.data());
+  //     console.log(doc)
   //   }
-  // };
-
+  //   );
+  //    const test = await setDoc(newBooksRef,{number: num})
+  //   }catch(err){
+  //     console.log(err)
+  //   }
+  // }
   // RETURN ↓↓
   return (
     <div className="createPost">
-      <form onSubmit={handleAddTest}>
+      <form onSubmit={handleAdd}>
         <div className="formInput">
           <label htmlFor="file">
             Image: <div></div>
