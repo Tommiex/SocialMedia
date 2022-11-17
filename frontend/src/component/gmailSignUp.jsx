@@ -15,23 +15,9 @@ const GmailSignUp = () => {
       console.log("password");
       
     }
-    // const password =()=>{
-    //   if (pwd1 == pwd2) {
-    //     // setPassword(pwd2);
-    //     console.log("password");
-    //     return pwd1
-    //   }
-    // }
+  
     const auth = getAuth();
-    // const handleSignUp = async (values)=>{
-    //   const email = document.querySelector("#txtEmail").value;
-    //   const pwd1 = document.querySelector("#txtPassword").value;
-    //   try {
-    //     await createUserWithEmailAndPassword(auth, email, password)
-    //   }catch (error){
-    //     alert(error)
-    //   }
-    // }
+    
     createUserWithEmailAndPassword(auth, email, pwd1)
       .then((userCredential) => {
         const user = userCredential.user;

@@ -23,7 +23,7 @@ const GoogleLogin = () => {
         // The signed-in user info.
         const user = result.user;
         if (token) {
-          navigate("/main");
+          navigate("/registration/info");
         }
 
         // ...
