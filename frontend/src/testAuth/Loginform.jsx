@@ -8,83 +8,59 @@ import { loginform } from "../formSource";
 
 const ReLogin = ({ handleSubmit }) => {
   const navigate = useNavigate();
-  const onFinish = (values) => {
-    console.log("Success:", values);
-    handleSubmit(values);
+  const [userInfo, setUserInfo] = useState(null);
+  const getInputValue = (e) => {
+    const id = e.target.id;
+    const value = e.target.value;
+
+    setUserInfo({ ...userInfo, [id]: value });
   };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  console.log(userInfo);
+  // const onFinish = (values) => {
+  //   console.log("Success:", values);
+  //   handleSubmit(values);
+  // };
+  // const onFinishFailed = (errorInfo) => {
+  //   console.log("Failed:", errorInfo);
+  // };
+  const handleFinish = () => {
+    handleSubmit(userInfo);
   };
 
   return (
-    <div>
-      
-        <Form
-          name="normal_login"
-          className="login-form"
-          initialValues={{
-            remember: true,
+    <>
+      <div className="loginForm">
+        {loginform.map((input) => (
+          <>
+            <div className="formInput" key={input.id}>
+              <div className="Icon">{input.icon}</div>
+              <input
+                id={input.id}
+                type="text"
+                onChange={getInputValue}
+                required="required"
+              ></input>
+              <span className="placeholder">{input.placeholder}</span>
+              <span className="label">{input.label}</span>
+            </div>
+          </>
+        ))}
+      </div>
+      <div className="buttonDiv">
+        <button onClick={handleFinish} className="loginBtn">
+          Login
+        </button>
+        <p className="d-inline"> or </p>
+        <button
+          className="registerBtn"
+          onFocus={() => {
+            navigate("/registration/signup");
           }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
         >
-          <Form.Item
-            type="Email"
-            className="authinput"
-            id="txtEmail"
-            name="email"
-            rules={[
-              {
-                required: true,
-                message: "Please input your email!",
-              },
-            ]}
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Email"
-              required="required"
-            />
-          </Form.Item>
-          <Form.Item
-            type="Password"
-            className="authinput"
-            id="txtPassword"
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: "Please input your Password!",
-              },
-            ]}
-          >
-            <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Password"
-            />
-          </Form.Item>
-          <Form.Item className="buttonDiv">
-            <button
-              type="primary"
-              htmlType="submit"
-              className="loginBtn"
-            >
-              Login
-            </button>
-            <p className="d-inline"> or </p>
-            <button
-              className="registerBtn"
-              onFocus={() => {
-                navigate("/registration/signup");
-              }}
-            >
-              Register now!
-            </button>
-          </Form.Item>
-        </Form>
-    </div>
+          Register now!
+        </button>
+      </div>
+    </>
   );
 };
 

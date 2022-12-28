@@ -11,14 +11,14 @@ const LogIntt = () => {
   const navigate = useNavigate();
   const [nav, setNav] = useState(false)
   const handleSubmit = async (values) => {
-    const { email, password } = values;
+    const { txtEmail, txtPassword } = values;
     // const constructor= (userId)=>{
     //   this.userId =auth().currentUser.uid
     console.log(currentUser)
     // }
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, txtEmail, txtPassword);
       // const token = localStorage.getItem(constructor);
       // console.log(token)
       setNav(true)
@@ -39,7 +39,7 @@ const LogIntt = () => {
   console.log(currentUser)
   
   return (
-    <div>
+    <div className="large">
 
         <ReLogin handleSubmit={handleSubmit}></ReLogin>
    

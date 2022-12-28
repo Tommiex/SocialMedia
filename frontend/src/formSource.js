@@ -1,3 +1,5 @@
+import * as AiIcons from 'react-icons/ai'
+
 export const postInputs =[
     {
         id:'description',
@@ -41,29 +43,20 @@ export const userInputs = [
 
 export const loginform = [
     {
+        label:'Email',
         name: 'Email',
         id:'txtEmail',
         type: 'Email',
-        rules: [
-            {
-                required: true,
-                message: "Please input your Email!"
-            },
-        ],
-        placeholder: 'Email'
+        placeholder: 'Email',
+        icon:<AiIcons.AiOutlineMail/>
 
     },
     {
+        label:'Password',
         name: 'Password',
         id:'txtPassword',
         type: 'Password',
-        rules: [
-            {
-                required: true,
-                message: "Please input your Password!"
-            },
-        ],
-        placeholder: 'Password'
-
+        placeholder: 'Password',
+        icon:<AiIcons.AiFillUnlock/>
     },
 ]
