@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes , Navigate} from "react-router-dom";
 import Test from "./data/dataTest";
 import GmailSignUp from "./component/gmailSignUp";
 
@@ -12,6 +12,7 @@ import Testcount from "./component/test";
 import TestData from "./component/test";
 
 function App() {
+ 
   return (
     <div>
       <AuthProvider>

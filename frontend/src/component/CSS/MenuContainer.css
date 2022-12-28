@@ -20,14 +20,15 @@
   top: 0;
   padding: 30px 15px;
   gap: 55px;
-  /* background: rgb(176, 255, 223); */
+  background: rgb(176, 255, 223);
 }
 .subMenu {
   height: 100%;
-  /* background: salmon; */
-  flex-direction: column;
+  background: salmon;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  gap: 10px;
 }
 main {
   flex: 1;

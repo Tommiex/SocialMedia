@@ -1,0 +1,98 @@
+
+label{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 400px;
+  font-size: 30px ;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+  color: white;
+}
+#normal_login_email,
+#normal_login_password{
+  color: white;
+  position: relative;
+  height: 30px;
+  width: 300px;
+  padding-left:15px;
+  padding-bottom: 0;
+  border-bottom: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  background-color: rgba(0, 0, 255, 0);
+  margin: 0 auto;
+  outline: none;
+}
+#normal_login > div:nth-child(1)::after{
+  content: "";
+  position: absolute;
+  width: 0px; 
+  height: 1px;
+  background-color: red;
+  transition: width .35s ease-in-out;
+  left: 50%;
+  transform: translate(-41%,10%);
+}
+
+#normal_login > div:nth-child(1):hover::after{
+  width: 315px;
+}
+
+input:-internal-autofill-selected{
+  color: unset;
+}
+span{
+    margin: 0 10px 0;
+}
+
+.btnState{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.buttonDiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.d-inline,.loginBtn,.registerBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  color: white;
+  font-weight: 10;
+}
+
+.loginBtn,.registerBtn{
+  background-color: rgb(77, 77, 77);
+  border: 0;
+  height: 30px;
+  padding-right: 15px;
+  padding-left: 15px;
+  
+}
+
+#normal_login > div.ant-form-item.buttonDiv > div > div > div > div{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}

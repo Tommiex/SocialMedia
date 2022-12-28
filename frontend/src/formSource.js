@@ -20,27 +20,50 @@ export const postInputs =[
 ]
 export const userInputs = [
     {
-        id:'username',
-        label:'Username',
-        type: 'text',
-        placeholder: 'Username',
+        id:'Email',
+        label:'Email',
+        type: 'mail',
+        placeholder: 'Email',
     },
     {
-        id:'password',
+        id:'Password',
         label:'Password',
         type: 'password',
         placeholder: 'Password',
     },
     {
-        id:'passwordConfirmation',
+        id:'PasswordConfirmation',
         label:'Password Confirmation',
         type: 'password',
         placeholder: 'Confirm password',
     },
+]
+
+export const loginform = [
     {
-        id:'email',
-        label:'Email',
-        type: 'mail',
-        placeholder: 'Email',
+        name: 'Email',
+        id:'txtEmail',
+        type: 'Email',
+        rules: [
+            {
+                required: true,
+                message: "Please input your Email!"
+            },
+        ],
+        placeholder: 'Email'
+
+    },
+    {
+        name: 'Password',
+        id:'txtPassword',
+        type: 'Password',
+        rules: [
+            {
+                required: true,
+                message: "Please input your Password!"
+            },
+        ],
+        placeholder: 'Password'
+
     },
 ]

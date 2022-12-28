@@ -1,63 +1,74 @@
 import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState,useContext} from "react";
+import { AuthContext } from "../testAuth/auth";
+import { useNavigate} from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import "./CSS/gmailSignUp.css";
+import { userInputs } from "../formSource";
+import { db, storage } from "../FirebaseConfig";
+import {doc,getDoc,setDoc,addDoc,serverTimestamp,collection} from "firebase/firestore"
 const GmailSignUp = () => {
   const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState({})
   const [password, setPassword] = useState(null);
-  function SignUp() {
-    const email = document.querySelector("#txtEmail").value;
-    const pwd1 = document.querySelector("#txtPassword").value;
-    const pwd2 = document.querySelector("#txtPasswordConfirmation").value;
+  const [navBool, setNavBool] = useState(false)
+  const currentUser = useContext(AuthContext);
+  
+    const getInputValue = (e) =>{
+      const id = e.target.id
+      const value = e.target.value
+
+      setUserInfo({...userInfo, [id]:value})
+    }
+    console.log(userInfo);
+
+    const handleAdd = async (e) => {
+      e.preventDefault();
+      const email = userInfo.Email;
+      const pwd1 = userInfo.Password;
+      const pwd2 = password;
     if (pwd1 == pwd2) {
       setPassword(pwd2);
       console.log("password");
-      
     }
-  
     const auth = getAuth();
-    
-    createUserWithEmailAndPassword(auth, email, pwd1)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(password)
-        navigate('/')
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
-  }
+      try {
+        createUserWithEmailAndPassword(auth, email, pwd1)
+        setNavBool(true)
+        await setDoc(
+          doc(db,"User",userInfo.name), //collection will auto generate ID, Doc can order ID
+          {
+            ...userInfo,
+            timeStamp: serverTimestamp(),
+          }
+        );
+        
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    if(navBool){
+      navigate('/')
+    }
   return (
+    
     <div className="gmailSignUp">
-      <label>
-        <span>Email</span>
-        <input
-          type="Email"
-          placeholer="Email"
-          className="authinput"
-          id="txtEmail"
-        ></input>
-      </label>
-      <label>
-        <span>Password</span>
-        <input
-          type="Password"
-          placeholer="Password"
-          className="authinput"
-          id="txtPassword"
-        ></input>
-      </label>
-      <label>
-        <span>Password confirmation</span>
-        <input
-          type="Password"
-          placeholer="Password confirmation"
-          className="authinput"
-          id="txtPasswordConfirmation"
-        ></input>
-      </label>
+      <form onSubmit={handleAdd}>
+      {userInputs.map((input)=>(
+        <div key={input.id}>
+          <label>{input.label}</label>
+          <input
+            type={input.type}
+            id={input.id}
+            placeholder={input.placeholder}
+            onChange={getInputValue}
+          >
+          </input>
+        </div>
+      ))}
+      <button type="submit">
+        setDoc
+      </button>
       <div>
         <button
           onFocus={() => {
@@ -66,13 +77,16 @@ const GmailSignUp = () => {
         >
           back to Login page
         </button>
-        <button className="button" id="btnSignUp" onClick={SignUp}>
+        <button className="button" id="btnSignUp" onClick={handleAdd}>
           SignIn
         </button>
         
-//       </div>
-//     </div>
+      </div>
+    </form>
+    </div>
   );
 };
 
 export default GmailSignUp;
+
+// ทำให้เพิ่มuidได้

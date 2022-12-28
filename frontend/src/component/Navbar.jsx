@@ -15,19 +15,19 @@ function Navbar() {
   }
   return (
     <div className="Nav-box">
+      <div>Profile</div>
       <div className="searchBox">
-        <input className="search" type="text" placeholder="  Search.." />
+        <input className="search" type="text" placeholder="Search.." />
         <div className="searchlogo">
           <FaSearch></FaSearch>
         </div>
       </div>
       <div className="Button-group">
-        <button className="button-17">SignUp</button>
-        <button className="button-18">Login</button>
+        <button className="btn18">Login</button>
+        <button className="btn19" id="btnLogout" onClick={logout}>
+          Logout
+        </button>
       </div>
-      <button className="button" id="btnLogout" onClick={logout}>
-        Logout
-      </button>
     </div>
   );
 }

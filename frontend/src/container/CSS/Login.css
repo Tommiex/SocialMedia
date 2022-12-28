@@ -1,28 +1,39 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
 body{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(199, 199, 199);
 }
 
+
 .Login{
-    
-    min-width: 100vh ;
     min-height: 100vh ;
+    height: 100%;
     display:flex;
     justify-content: center;
     align-items:center;
-    
 }
 .LoginState{
     position:relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(167, 255, 245);
-    min-width: 300px;
     min-height: 400px;
+    color: white;
+    height: 100%;
     flex-direction: column;
-    background-color: rgba(12, 255, 255, 0.546);
+    background-color: rgba(68, 68, 68, 0.546);
     gap: 20px;
 }
+
+@media only screen and (max-width: 400px) {
+    .Login{
+        height: 100%;
+        width: auto;
+    }
+  }
 
 .loginTitle{
     position: absolute;
@@ -44,14 +55,14 @@ body{
     animation-name: opacity ;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 400px) {
     .imgLogin>img{
         max-height: 500px;
         animation-name: opacity ;
         animation-duration: 1s;
         animation-fill-mode: forwards
     }
-   
+
     @keyframes opacity {
         from { opacity: 1; height: 400px;}
         to{ opacity: 0; display: none; height: 0;} 

@@ -5,6 +5,7 @@ import { auth } from "../FirebaseConfig";
 import ReLogin from "./Loginform";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
+import '../container/CSS/Login.css'
 
 const LogIntt = () => {
   const navigate = useNavigate();

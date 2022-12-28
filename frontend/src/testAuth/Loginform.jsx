@@ -1,31 +1,24 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
-import "../component/CSS/gmailSignUp.css";
-import "../component/CSS/gmailLogin.css";
-import "../container/CSS/Login.css";
+import "./CSS/gmailLogin.css";
 import { Link, useNavigate } from "react-router-dom";
 import img from "../assets/img.jpg";
 import { useState } from "react";
-
+import { loginform } from "../formSource";
 
 const ReLogin = ({ handleSubmit }) => {
+  const navigate = useNavigate();
   const onFinish = (values) => {
     console.log("Success:", values);
     handleSubmit(values);
   };
-
-  
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  
-  return (
-    <div className="Login">
-      <section>
-        <div className="imgLogin">
-          <img src={img} />
-        </div>
 
+  return (
+    <div>
+      
         <Form
           name="normal_login"
           className="login-form"
@@ -51,6 +44,7 @@ const ReLogin = ({ handleSubmit }) => {
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
               placeholder="Email"
+              required="required"
             />
           </Form.Item>
           <Form.Item
@@ -71,27 +65,25 @@ const ReLogin = ({ handleSubmit }) => {
               placeholder="Password"
             />
           </Form.Item>
-          <Form.Item>
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-          </Form.Item>
-
-          <Form.Item>
-            <Button
+          <Form.Item className="buttonDiv">
+            <button
               type="primary"
               htmlType="submit"
-              className="login-form-button"
+              className="loginBtn"
             >
               Login
-            </Button>
+            </button>
             <p className="d-inline"> or </p>
-            <Link to="/registration/signup">
-              <li className="d-inline">Register now!</li>
-            </Link>
+            <button
+              className="registerBtn"
+              onFocus={() => {
+                navigate("/registration/signup");
+              }}
+            >
+              Register now!
+            </button>
           </Form.Item>
         </Form>
-      </section>
     </div>
   );
 };

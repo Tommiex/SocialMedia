@@ -1,16 +1,36 @@
-import React from 'react'
+import React from "react";
+import { getStorage, ref, listAll } from "firebase/storage";
+import { useState, useEffect, useCallback } from "react";
+import { uploadBytes, getDownloadURL, list } from "firebase/storage";
+import { storage } from "../FirebaseConfig";
+import "./CSS/Feed.css";
 
 const Feed = () => {
-  function picSize() {
-    return <div className={`pic${picSize}`}></div>;
-  }
-  return (
-    <div className="picGroup">
-      <div className="pic small"><p>sss</p></div>
-      <div className="pic medium"><p>ssss</p></div>
-      <div className="pic large"><p>sssss</p></div>
-    </div>
-  );
-}
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]);
 
-export default Feed
+  const fetchData = useCallback(async () => {
+    const imagesListRef = ref(storage, "feed/");
+    const response = await listAll(imagesListRef);
+    const urls = [];
+    for await (const item of response.items) {
+      const url = await getDownloadURL(item);
+      urls.push(url);
+    }
+    setImageUrls(urls);
+  }, [imageUrls]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return imageUrls;
+  // <div className="post-grid">
+  //   {imageUrls.map((url, i) => {
+  //     //return  รูปทั้งหมดมาใช้
+  //     return <img className = "pic-Group"src={url} key={i} alt="pic" />;
+  //   })}
+  // </div>
+};
+
+export default Feed;

@@ -1,0 +1,23 @@
+.post-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-rows: auto;
+  
+    align-items: center;
+  }
+  /* .pic-Group {
+  
+    overflow: hidden;
+    padding: 50% 0;
+    position: relative;
+    max-width:150px;
+    max-height: 150px;
+    opacity: 0.8;
+  } */
+  
+  .pic-Item img {
+   
+    position: absolute;
+  
+  
+  }

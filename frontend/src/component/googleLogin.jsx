@@ -43,7 +43,7 @@ const GoogleLogin = () => {
   return (
     <div>
       <button
-        className="googleLogin"
+        className="googleLogBtn"
         onClick={() => {
           handleGoogleLogin();
         }}

@@ -9,11 +9,7 @@ const Home = () => {
       <div>
         <Navbar/>
       </div>
-      <div className="subMenu">
-          <div>
-            <MenuContainer></MenuContainer>
-          </div>
-        </div>
+      <MenuContainer></MenuContainer>
       <div >
         <Routes >
           <Route path="/user-profile" element={<UserProfile/>}></Route>
