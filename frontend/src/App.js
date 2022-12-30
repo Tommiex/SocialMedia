@@ -10,11 +10,13 @@ import FormInfo from "./component/FormInfo";
 import CreatePost from "./component/CreatePost";
 import Testcount from "./component/test";
 import TestData from "./component/test";
+import MyComponent from "./chatgpt";
 
+import "./App.css"
 function App() {
  
   return (
-    <div>
+    <div className="root">
       <AuthProvider>
         <Routes>
           <Route path='/*' element={<Home/>}/>
@@ -25,6 +27,7 @@ function App() {
           <Route path="/createPost" element={<CreatePost/>}/>
           <Route path="/tests" element={<Testcount/>}/>
           <Route path="/testdata" element={<TestData/>}/>
+          <Route path="/chat" element={<MyComponent/>}/>
         </Routes>
       </AuthProvider>
     </div>

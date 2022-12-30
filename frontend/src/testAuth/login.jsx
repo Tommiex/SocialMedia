@@ -39,11 +39,11 @@ const LogIntt = () => {
   console.log(currentUser)
   
   return (
-    <div className="large">
+    <>
 
         <ReLogin handleSubmit={handleSubmit}></ReLogin>
    
-    </div>
+    </>
   );
 };
 

@@ -17,7 +17,7 @@ function Navbar() {
     <div className="Nav-box">
       <div>Profile</div>
       <div className="searchBox">
-        <input className="search" type="text" placeholder="Search.." />
+        <input className="search" type="text" placeholder="Search.." required={true}/>
         <div className="searchlogo">
           <FaSearch></FaSearch>
         </div>

@@ -36,7 +36,7 @@ const ReLogin = ({ handleSubmit }) => {
               <div className="Icon">{input.icon}</div>
               <input
                 id={input.id}
-                type="text"
+                type={input.type}
                 onChange={getInputValue}
                 required="required"
               ></input>
@@ -46,19 +46,21 @@ const ReLogin = ({ handleSubmit }) => {
           </>
         ))}
       </div>
-      <div className="buttonDiv">
+      <div className='signupLine'>
         <button onClick={handleFinish} className="loginBtn">
           Login
         </button>
-        <p className="d-inline"> or </p>
-        <button
-          className="registerBtn"
-          onFocus={() => {
-            navigate("/registration/signup");
-          }}
-        >
-          Register now!
-        </button>
+        <div className="spanAcc">
+          <span>Create your account?    </span>
+          <button
+                className="registerBtn"
+                onFocus={() => {
+                  navigate("/registration/signup")
+                }}
+              >
+                Sign up
+          </button>
+        </div>
       </div>
     </>
   );

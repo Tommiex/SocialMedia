@@ -11,29 +11,28 @@
   display: flex;
   align-items: center;
   height: 15px;
-  border-radius: 7px;
-  border: 2px solid rgba(0, 0, 0, 0.466);
   padding: 15px 15px;
-  background: white;
   width: 100%;
-
-  cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
-    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  position: relative;
 }
-.searchBox:hover {
-  background: rgba(178, 178, 178, 0.526);
+.searchBox input:focus,
+.searchBox input:hover,
+.searchBox input:valid{
+  border: 3px solid blue;
 }
 .search {
   background: rgba(250, 128, 114, 0);
   outline: none;
   font-size: 20px;
-  cursor: pointer;
-  width: 100%;
   border: #3c404300;
+  height: 15px;
+  border-radius: 150px;
+  padding: 25px;
+  background: white;
+  width: 100%;
+  cursor: pointer;
 }
 .searchlogo {
-  background: #b8b8b8;
   min-width: 30px;
   height: 30px;
   border-radius: 100%;
@@ -41,6 +40,8 @@
   justify-content: center;
   align-items: center;
   font-size: 13px;
+  position: absolute;
+  right: 30px;
 }
 
 .Button-group {
