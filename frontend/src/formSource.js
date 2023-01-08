@@ -1,4 +1,10 @@
 import * as AiIcons from 'react-icons/ai'
+import { FaHome, FaHeart } from "react-icons/fa";
+import { MdWallpaper } from "react-icons/md";
+import { ImCamera } from "react-icons/im";
+import { IoLogoGameControllerB } from "react-icons/io";
+import { BiCodeCurly } from "react-icons/bi";
+
 
 export const postInputs =[
     {
@@ -60,3 +66,24 @@ export const loginform = [
         icon:<AiIcons.AiFillUnlock/>
     },
 ]
+
+export const menu = [
+    { name: "Home", Icons: <FaHome /> },
+    { name: "Wallpapers", Icons: <MdWallpaper /> },
+    { name: "Photography", Icons: <ImCamera /> },
+    { name: "Gaming", Icons: <IoLogoGameControllerB /> },
+    { name: "Coding", Icons: <BiCodeCurly /> },
+    { name: "Other", Icons: <FaHome /> },
+  ];
+  export const game = [
+    {
+        placeholder: 'player1',
+        id: 'player1',
+        number: 0,
+    },
+    {
+        placeholder: 'player2',
+        id:"player2",
+        number: 1,
+    },
+  ]

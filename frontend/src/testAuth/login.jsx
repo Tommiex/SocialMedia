@@ -1,6 +1,6 @@
 import React, { useContext, useId } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "./auth";
+import {useAuth } from "./auth";
 import { auth } from "../FirebaseConfig";
 import ReLogin from "./Loginform";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -29,7 +29,7 @@ const LogIntt = () => {
     }
   };
   
-  const currentUser = useContext(AuthContext)
+  const currentUser = useAuth()
 
   useEffect(() => {
     if (currentUser && nav) {

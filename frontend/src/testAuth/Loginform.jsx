@@ -16,13 +16,7 @@ const ReLogin = ({ handleSubmit }) => {
     setUserInfo({ ...userInfo, [id]: value });
   };
   console.log(userInfo);
-  // const onFinish = (values) => {
-  //   console.log("Success:", values);
-  //   handleSubmit(values);
-  // };
-  // const onFinishFailed = (errorInfo) => {
-  //   console.log("Failed:", errorInfo);
-  // };
+  
   const handleFinish = () => {
     handleSubmit(userInfo);
   };
@@ -54,7 +48,7 @@ const ReLogin = ({ handleSubmit }) => {
           <span>Create your account?    </span>
           <button
                 className="registerBtn"
-                onFocus={() => {
+                onClick={() => {
                   navigate("/registration/signup")
                 }}
               >

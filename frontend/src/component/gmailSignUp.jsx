@@ -1,8 +1,8 @@
 import React from "react";
 import { useState,useContext,useEffect} from "react";
-import { AuthContext } from "../testAuth/auth";
+import { useAuth} from "../testAuth/auth";
 import { useNavigate} from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
 import "./CSS/gmailSignUp.css";
 import { userInputs } from "../formSource";
 import { db, storage } from "../FirebaseConfig";
@@ -13,7 +13,7 @@ const GmailSignUp = () => {
   const [password, setPassword] = useState(null);
   const [passwordConfirmation, setPasswordConfirmation] = useState(null)
   const [navBool, setNavBool] = useState(false)
-  const currentUser = useContext(AuthContext);
+  const currentUser = useAuth();
 
     const getInputValue = (e) =>{
       const id = e.target.id
@@ -28,11 +28,7 @@ const GmailSignUp = () => {
 
       }
     }
-    console.log(userInfo);
 
-    useEffect(() => {
-      console.log(userInfo)
-    }, []);
     const handleAdd = async (e) => {
       e.preventDefault();
       if(password==passwordConfirmation!=null){
@@ -57,7 +53,7 @@ const GmailSignUp = () => {
       }
       
     };
-    console.log(password)
+    console.log(userInfo)
   return (
     
     <div className="gmailSignUp">
@@ -82,7 +78,7 @@ const GmailSignUp = () => {
       </div>
       <div className="btnGroup">
         <button
-          onFocus={() => {
+          onClick={() => {
             navigate("/registration");
           }}
           className="signupBtn"
@@ -101,4 +97,5 @@ const GmailSignUp = () => {
 
 export default GmailSignUp;
 
-// ทำให้เพิ่มuidได้
+//ทำ verificatiton โดยsingup เสร็จก็ให้กดส่งเมล เพื่อ verify เลย เป็นalert หรือ navigate ไปก็ได้
+

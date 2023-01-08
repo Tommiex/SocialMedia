@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext,createContext} from "react";
 import { auth } from "../FirebaseConfig";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, sendEmailVerification } from "firebase/auth";
 
-export const AuthContext = React.createContext();
+const authContext = createContext();
 
+export const useAuth = () => {
+  return useContext(authContext);
+};
 export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      console.log(user)
       setCurrentUser(user);
       setLoading(false);
     });
@@ -19,8 +23,8 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ currentUser }}>
+    <authContext.Provider value={{ currentUser }}>
       {children}
-    </AuthContext.Provider>
+    </authContext.Provider>
   );
 };

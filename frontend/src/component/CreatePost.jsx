@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./CSS/CreatePost.css";
-import { AuthContext } from "../testAuth/auth";
+import { useAuth } from "../testAuth/auth";
 import axios from "axios";
 import {
   doc,
@@ -25,7 +25,7 @@ const CreatePost = () => {
   var num = 0;
   var postN = 0;
 
-  const currentUser = useContext(AuthContext);
+  const currentUser = useAuth();
 
   async function fetchData() {
     const dataCol = collection(db,"user's post",currentUser.currentUser.uid,"post");

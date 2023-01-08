@@ -6,7 +6,7 @@ import GmailSignUp from "./component/gmailSignUp";
 import Login from "./container/Login.jsx";
 import {AuthProvider} from "./testAuth/auth";
 import Home from "./container/Home";
-import FormInfo from "./component/FormInfo";
+import FormInfo from "./component/Search";
 import CreatePost from "./component/CreatePost";
 import Testcount from "./component/test";
 import TestData from "./component/test";

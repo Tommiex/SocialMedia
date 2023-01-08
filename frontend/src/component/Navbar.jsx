@@ -3,10 +3,9 @@ import { FaSearch } from "react-icons/fa";
 import { getAuth, signOut } from "firebase/auth";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../testAuth/auth";
+
 
 function Navbar() {
-  const user = useContext(AuthContext)
   const navigate = useNavigate()
   const auth = getAuth();
   function logout() {
