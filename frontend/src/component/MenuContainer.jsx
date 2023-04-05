@@ -15,7 +15,8 @@ function MenuContainer() {
             className="iconStyle"
             to={`/categories/${menus.name}`}
           >
-            {menus.Icons}</NavLink>
+            {menus.Icons}
+          </NavLink>
         </>
       ))}
       {/* <div className="iconStyle">

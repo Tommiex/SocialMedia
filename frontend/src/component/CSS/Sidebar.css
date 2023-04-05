@@ -1,0 +1,48 @@
+.mainSidebar{
+    background-color:  #1D2023;
+    height: 100%;
+    width: 250px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+.sideProfile{
+    border: 2px solid white;
+    height: 110px;
+    width: 100%;
+    color: aliceblue;
+}
+.sideMenu{
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left:30px ;
+    font-size: 20px;
+    transform: translateY(30%);
+}
+.bold{
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+}
+.menuSide{
+    color: white;
+    text-decoration: none;
+    transform: translateX(8px);
+}
+.Button-group {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    margin-left:30px ;
+    bottom: 20px;
+  }
+  .Button-group >button{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 0;
+  }
+  

@@ -147,7 +147,6 @@ function first(e){
   }else{
     console.log("write input")
   }
-  setData({player1: 0})
 }
 const player1Round=()=> {
   printBoard(board)
@@ -193,5 +192,3 @@ console.log(data)
   );
 }
 export default MyComponent
-// clear input box use useState from GPT
-//player 2 btn

@@ -1,0 +1,14 @@
+.homeFlex{
+    display: flex;
+    height: 100%;
+
+}
+.homeContent{
+    width: 100%;
+    
+}
+.feedFlex{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}

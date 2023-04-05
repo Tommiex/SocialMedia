@@ -1,32 +1,19 @@
 import "./CSS/Navbar.css";
 import { FaSearch } from "react-icons/fa";
-import { getAuth, signOut } from "firebase/auth";
 import { Navigate, useNavigate } from "react-router-dom";
-import { useContext } from "react";
 
 
 function Navbar() {
-  const navigate = useNavigate()
-  const auth = getAuth();
-  function logout() {
-    signOut(auth);
-    navigate('/registration')
-  }
+  const navigate = useNavigate();
   return (
     <div className="Nav-box">
-      <div>Profile</div>
       <div className="searchBox">
         <input className="search" type="text" placeholder="Search.." required={true}/>
         <div className="searchlogo">
           <FaSearch></FaSearch>
         </div>
       </div>
-      <div className="Button-group">
-        <button className="btn18">Login</button>
-        <button className="btn19" id="btnLogout" onClick={logout}>
-          Logout
-        </button>
-      </div>
+      <button className="navSignIn" onClick={()=>{navigate("/registration")}}>sign in</button>
     </div>
   );
 }

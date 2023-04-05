@@ -11,6 +11,6 @@ const Feed = () => {
       <span>Feed</span>
     </div>
   )
-};
 
+};
 export default Feed;

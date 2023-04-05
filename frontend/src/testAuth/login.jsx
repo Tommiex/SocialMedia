@@ -23,7 +23,6 @@ const LogIntt = () => {
       // console.log(token)
       setNav(true)
       navigate("/")
-
     } catch (error) {
       alert(error);
     }

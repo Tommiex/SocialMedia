@@ -30,7 +30,7 @@ export const userInputs = [
     {
         id:'Email',
         label:'Email',
-        type: 'mail',
+        type: 'email',
         placeholder: 'Email',
     },
     {
@@ -86,4 +86,27 @@ export const menu = [
         id:"player2",
         number: 1,
     },
-  ]
+]
+export const sideMenu = [
+    {
+        name: "Profile",
+        link:"/user-profile",
+        style: "bold"
+
+    },
+    {
+        name: "Favorite",
+        link:"/favorite",
+        style: "menuSide"
+    },
+    {
+        name: "Event",
+        link:"/Event",
+        style: "menuSide"
+    },
+    {
+        name: "Post",
+        link:"/createPost",
+        style: "menuSide"
+    },
+]

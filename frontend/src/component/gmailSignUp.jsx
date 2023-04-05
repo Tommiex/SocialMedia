@@ -18,6 +18,7 @@ const GmailSignUp = () => {
     const getInputValue = (e) =>{
       const id = e.target.id
       const value = e.target.value
+      
 
       setUserInfo({...userInfo, [id]:value})
       if(id=="Password"){
@@ -31,14 +32,14 @@ const GmailSignUp = () => {
 
     const handleAdd = async (e) => {
       e.preventDefault();
-      if(password==passwordConfirmation!=null){
+      if(password==passwordConfirmation && password!==''){
         console.log("success")
         const auth = getAuth();
         try {
           await createUserWithEmailAndPassword(auth, userInfo.Email, password)
           navigate("/")
           setDoc(
-            doc(db,"User",userInfo.name), //collection will auto generate ID, Doc can order ID
+            doc(db,"User",userInfo.Email), //collection will auto generate ID, Doc can order ID
             {
               ...userInfo,
               timeStamp: serverTimestamp(),

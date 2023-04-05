@@ -10,7 +10,7 @@ import FormInfo from "./component/Search";
 import CreatePost from "./component/CreatePost";
 import Testcount from "./component/test";
 import TestData from "./component/test";
-import MyComponent from "./chatgpt";
+import MyComponent from "./gameTest";
 
 import "./App.css"
 function App() {
@@ -22,12 +22,12 @@ function App() {
           <Route path='/*' element={<Home/>}/>
           <Route path="/registration" element={<Login />} />
           <Route path="/registration/signup" element={<GmailSignUp />} />
-          <Route path="/registration/info" element={<FormInfo/>} />
+          {/* <Route path="/registration/info" element={<FormInfo/>} /> */}
           <Route path="/test" element={<Test />} />
-          <Route path="/createPost" element={<CreatePost/>}/>
-          <Route path="/tests" element={<Testcount/>}/>
-          <Route path="/testdata" element={<TestData/>}/>
-          <Route path="/chat" element={<MyComponent/>}/>
+          {/* <Route path="/createPost" element={<CreatePost/>}/> */}
+          {/* <Route path="/tests" element={<Testcount/>}/>
+          <Route path="/testdata" element={<TestData/>}/> */}
+          <Route path="/game" element={<MyComponent/>}/>
         </Routes>
       </AuthProvider>
     </div>
