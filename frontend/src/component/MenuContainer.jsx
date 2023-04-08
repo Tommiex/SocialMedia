@@ -19,12 +19,6 @@ function MenuContainer() {
           </NavLink>
         </>
       ))}
-      {/* <div className="iconStyle">
-        <FaHome className="homeIcon" />
-      </div>
-      <div className="iconStyle">
-        <FaHeart className="loveIcon"></FaHeart>
-      </div> */}
     </div>
   );
 }

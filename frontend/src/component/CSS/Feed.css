@@ -21,3 +21,6 @@
   
   
   }
+  #postImage > img{
+    height:200px
+  }
