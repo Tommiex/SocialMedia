@@ -23,7 +23,7 @@ import { useAuth } from "../testAuth/auth";
 const Feed = () => {
   const currentUser = useAuth();
   const [useData, setuseData] = useState();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
  
   const dataArray = [];
@@ -39,20 +39,19 @@ const Feed = () => {
       const uid = doc.id
       const uidSnapshot = collection(db, "user's post", doc.id, "post");
       const post = await getDocs(uidSnapshot);
-      post.forEach((doc) => {
+      post.forEach(async (doc) => {
         const postData = doc.data();
         console.log(postData); 
-            const storageRef = ref(storage, postData.img);
-            console.log("pass this")
-            getDownloadURL(storageRef)
-             .then((url)=>{
-               dataArray.push({img: url});
-                 setData(dataArray);
-                 setLoading(false);
-             })
-            .catch((error)=>{
-            console.log(error)
-          })
+        try{            
+          const storageRef = ref(storage, postData.img);
+          console.log("pass this")
+          const downloadURL = await getDownloadURL(storageRef);
+          dataArray.push({img: downloadURL});
+            setData(dataArray);
+            setLoading(false);
+          }catch(error){
+          console.log(error)
+        }
         
 
     })
@@ -76,7 +75,7 @@ const Feed = () => {
           <div key={index}>
             <div  id="postImage">
              
-              <img id={index} src={post.img}  />
+              <img id={index} src={post.img} alt="post" />
               
             </div>
           </div>
