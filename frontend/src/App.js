@@ -13,6 +13,7 @@ import TestData from "./component/test";
 import MyComponent from "./gameTest";
 
 import "./App.css"
+
 function App() {
  
   return (
@@ -24,10 +25,11 @@ function App() {
           <Route path="/registration/signup" element={<GmailSignUp />} />
           {/* <Route path="/registration/info" element={<FormInfo/>} /> */}
           <Route path="/test" element={<Test />} />
-          {/* <Route path="/createPost" element={<CreatePost/>}/> */}
+          <Route path="/createPost" element={<CreatePost/>}/>
           {/* <Route path="/tests" element={<Testcount/>}/>
           <Route path="/testdata" element={<TestData/>}/> */}
           <Route path="/game" element={<MyComponent/>}/>
+          
         </Routes>
       </AuthProvider>
     </div>

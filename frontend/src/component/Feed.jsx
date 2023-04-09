@@ -40,9 +40,10 @@ const Feed = () => {
       const uidSnapshot = collection(db, "user's post", doc.id, "post");
       const post = await getDocs(uidSnapshot);
       post.forEach((doc) => {
-        const postData = doc.data();
+        const postData = doc();
+        const postpic = postData.img
         console.log(postData); 
-            const storageRef = ref(storage, postData.img);
+            const storageRef = ref(storage, postpic);
             console.log("pass this")
             getDownloadURL(storageRef)
              .then((url)=>{
