@@ -17,12 +17,12 @@ import {
 import { db, storage } from "../FirebaseConfig";
 import { useState, useEffect, useCallback } from "react";
 import { uploadBytes, getDownloadURL, list } from "firebase/storage";
+import { NavLink } from "react-router-dom";
 import "./CSS/Feed.css";
 import { useAuth } from "../testAuth/auth";
 
 const Feed = () => {
   const currentUser = useAuth();
-  const [useData, setuseData] = useState();
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
  
@@ -35,47 +35,52 @@ const Feed = () => {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(async (doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id);
       const uid = doc.id
       const uidSnapshot = collection(db, "user's post", doc.id, "post");
       const post = await getDocs(uidSnapshot);
       post.forEach(async (doc) => {
         const postData = doc.data();
-        console.log(postData); 
+       
         try{            
           const storageRef = ref(storage, postData.img);
-          console.log("pass this")
+          
           const downloadURL = await getDownloadURL(storageRef);
-          dataArray.push({img: downloadURL});
-            setData(dataArray);
-            setLoading(false);
-          }catch(error){
-          console.log(error)
+          // downloadURL.forEach()
+          dataArray.push({...postData,img: downloadURL});
+          setData([...dataArray]);  
+          setLoading(false);
+        }catch(error){
         }
         
-
-    })
-      });
-    };
+        
+      })
+    });
+  };
   
   useEffect(() => {
     fetchData();
-   
-  }, [2]);
+    
+  }, []);
   if (loading) {
     console.log("Loading");
   }
+  
   return (
 
-    <div>
+    <div id="gridPost">
       {loading ? (
         <p>Loading...</p>
       ) : (
         data.map((post,index) => (
           <div key={index}>
             <div  id="postImage">
-             
-              <img id={index} src={post.img} alt="post" />
+              <NavLink>              
+                <div>
+                {post.Lag}
+
+                </div>
+                <img id={index} src={post.img} alt="post" />
+              </NavLink>
               
             </div>
           </div>

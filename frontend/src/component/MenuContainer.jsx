@@ -9,15 +9,15 @@ function MenuContainer() {
   
   return (
     <div className="subMenu">
-      {menu.map((menus) => (
-        <>
+      {menu.map((menus,index) => (
+        <div key={index}>
           <NavLink 
             className="iconStyle"
             to={`/categories/${menus.name}`}
           >
             {menus.Icons}
           </NavLink>
-        </>
+        </div>
       ))}
     </div>
   );

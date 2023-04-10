@@ -20,14 +20,14 @@ const Sidebar = () => {
           <div>username</div>
         </div>
         <div className="sideMenu">
-          {sideMenu.map((input) => (
-            <>
+          {sideMenu.map((input,index) => (
+            <div key={index}>
               <NavLink 
                 to={input.link} 
                 className={input.style}>
                   {input.name}
               </NavLink>
-            </>
+            </div>
           ))}
         </div>
         <div className="Button-group">
