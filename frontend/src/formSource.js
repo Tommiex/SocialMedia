@@ -28,6 +28,13 @@ export const postInputs =[
 ]
 export const userInputs = [
     {
+        id:'Username',
+        label:'Username',
+        type: 'text',
+        placeholder: 'Username',
+    },
+
+    {
         id:'Email',
         label:'Email',
         type: 'email',

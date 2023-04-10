@@ -12,6 +12,7 @@ import {
   getDocFromCache,
   serverTimestamp,
   collection,
+  getDoc,
 } from "firebase/firestore";
 import { db, storage } from "../FirebaseConfig";
 import { postInputs } from "../formSource";
@@ -22,10 +23,20 @@ const CreatePost = () => {
   const [file, setFile] = useState("");
   const [perc, setPerc] = useState(null);
   const [postNumber, setPostNumber] = useState(null);
+  const [userId , setUserId] = useState()
   var num = 0;
   var postN = 0;
-
   const currentUser = useAuth();
+
+  const uuid = require('uuid')
+  const uniqueId = uuid.v4()
+  
+  async function getUserId(){
+    const dataDoc = doc(db, "User",currentUser.currentUser.uid)
+    const dataSnapshot = await getDoc(dataDoc)
+    const info = dataSnapshot.data()
+    setUserId(info)
+  }
 
   async function fetchData() {
     const dataCol = collection(db,"user's post",currentUser.currentUser.uid,"post");
@@ -36,6 +47,7 @@ const CreatePost = () => {
 
   // useEffect ↓↓ upload Image to Storage
   useEffect(() => {
+    getUserId()
     fetchData()
     const uploadFile = () => {
       const name = new Date().getTime() + "+" + file.name;
@@ -84,33 +96,24 @@ const CreatePost = () => {
   console.log(data);
 
   //Real use
-  const handleAddTest = async (e) => {
-    e.preventDefault();
-    
-    try {
-      await setDoc(
-        doc(db,"user's post",currentUser.currentUser.uid,"post", "post"+postNumber.length), //collection will auto generate ID, Doc can order ID
-        {
-          ...data,
-          timeStamp: serverTimestamp(),
-        }
-      );
-      
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-
+ 
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
       setPostNumber(postNumber+1)
       console.log(postNumber)
       await setDoc(
+        doc(db,"user's post",currentUser.currentUser.uid),
+          {
+            user: true
+          }
+      )
+      await setDoc(
         doc(db,"user's post",currentUser.currentUser.uid,"post", "post"+postNumber), //collection will auto generate ID, Doc can order ID
         {
           ...data,
+          Username: userId.Username,
+          ID : uniqueId,
           timeStamp: serverTimestamp(),
         }
       );

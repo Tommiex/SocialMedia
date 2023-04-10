@@ -38,8 +38,9 @@ const GmailSignUp = () => {
         try {
           await createUserWithEmailAndPassword(auth, userInfo.Email, password)
           navigate("/")
+          console.log(auth)
           setDoc(
-            doc(db,"User",userInfo.Email), //collection will auto generate ID, Doc can order ID
+            doc(db,"User",auth.currentUser.uid), //collection will auto generate ID, Doc can order ID
             {
               ...userInfo,
               timeStamp: serverTimestamp(),
