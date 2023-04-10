@@ -34,7 +34,7 @@ const Feed = () => {
       let type = Math.floor(Math.random() * 4) + 1; // Generate a random type
       gridItems.push(
         <div className={`grid-item grid-item-type-${type}`} key={i}>
-          <h2 className="text2">{dataArray[i].Lag}</h2>
+          <button className="imageID">{dataArray[i].description}</button>
           <div id="postImage">
             <img src={dataArray[i].img} alt="post" />
           </div>
