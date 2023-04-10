@@ -25,9 +25,9 @@ const Feed = () => {
   const currentUser = useAuth();
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
- 
+
   const dataArray = [];
-  
+
   async function fetchData() {
     const citiesRef = collection(db, "user's post");
     const q = query(citiesRef);
@@ -40,52 +40,50 @@ const Feed = () => {
       const post = await getDocs(uidSnapshot);
       post.forEach(async (doc) => {
         const postData = doc.data();
-       
-        try{            
+
+        try {
           const storageRef = ref(storage, postData.img);
           
           const downloadURL = await getDownloadURL(storageRef);
-          // downloadURL.forEach()
-          dataArray.push({...postData,img: downloadURL});
-          setData([...dataArray]);  
+          dataArray.push({ ...postData, img: downloadURL });
+
+          setData([...dataArray]);
           setLoading(false);
-        }catch(error){
+        } catch (error) {
+          
         }
-        
-        
-      })
+      });
     });
-  };
-  
+  }
+
   useEffect(() => {
     fetchData();
-    
   }, []);
   if (loading) {
     console.log("Loading");
   }
-  
-  return (
 
-    <div id="gridPost">
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        data.map((post,index) => (
-          <div key={index}>
-            <div  id="postImage">
-              <NavLink>              
-                <div>
-                {post.Lag}
-
-                </div>
-                <img id={index} src={post.img} alt="post" />
-              </NavLink>
-              
-            </div>
+  //create fuction to edit grid style of picture frame
+  function createGridItems(dataArray) {
+    const gridItems = [];
+    for (let i = 0; i < dataArray.length; i++) {
+      let type = Math.floor(Math.random() * 4) + 1; // Generate a random type
+      gridItems.push(
+        <div className={`grid-item grid-item-type-${type}`} key={i}>
+          <h2 className="text2">{dataArray[i].Lag}</h2>
+          <div id="postImage">
+            <img src={dataArray[i].img} alt="post" />
           </div>
-        ))
-      )}
+        </div>
+      );
+    }
+    return gridItems;
+  }
+
+  return (
+    <div className="grid-container">
+      {createGridItems(data)}
+      {loading ? <p>Loading...</p> : null}
     </div>
   );
 };

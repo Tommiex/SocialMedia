@@ -1,11 +1,11 @@
 .post-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
-    grid-template-rows: auto;
-  
-    align-items: center;
-  }
-  /* .pic-Group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+
+  align-items: center;
+}
+/* .pic-Group {
   
     overflow: hidden;
     padding: 50% 0;
@@ -14,13 +14,44 @@
     max-height: 150px;
     opacity: 0.8;
   } */
-  
-  .pic-Item img {
-   
-    position: absolute;
-  
-  
-  }
-  #postImage > img{
-    height:200px
-  }
+
+.pic-Item img {
+  position: absolute;
+}
+#postImage > img {
+  height: 200px;
+}
+.text2 {
+  color: aliceblue;
+}
+.grid-item-type-1 {
+  background-color: #ffcccc;
+}
+
+.grid-item-type-2 {
+  background-color: #ccffcc;
+}
+
+.grid-item-type-3 {
+  background-color: #ccccff;
+}
+
+.grid-item-type-4 {
+  background-color: #ffffcc;
+}
+
+.type1 {
+  border: 2px solid #ff0000;
+}
+
+.type2 {
+  border: 2px solid #00ff00;
+}
+
+.type3 {
+  border: 2px solid #0000ff;
+}
+
+.type4 {
+  border: 2px solid #ff00ff;
+}
