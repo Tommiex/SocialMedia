@@ -17,54 +17,18 @@ import {
 import { db, storage } from "../FirebaseConfig";
 import { useState, useEffect, useCallback } from "react";
 import { uploadBytes, getDownloadURL, list } from "firebase/storage";
-import { NavLink } from "react-router-dom";
 import "./CSS/Feed.css";
 import { useAuth } from "../testAuth/auth";
 
 const Feed = () => {
   const currentUser = useAuth();
+  const [useData, setuseData] = useState();
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 
   const dataArray = [];
 
-  async function fetchData() {
-    const citiesRef = collection(db, "user's post");
-    const q = query(citiesRef);
-
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach(async (doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      const uid = doc.id
-      const uidSnapshot = collection(db, "user's post", doc.id, "post");
-      const post = await getDocs(uidSnapshot);
-      post.forEach(async (doc) => {
-        const postData = doc.data();
-
-        try {
-          const storageRef = ref(storage, postData.img);
-          
-          const downloadURL = await getDownloadURL(storageRef);
-          dataArray.push({ ...postData, img: downloadURL });
-
-          setData([...dataArray]);
-          setLoading(false);
-        } catch (error) {
-          
-        }
-      });
-    });
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-  if (loading) {
-    console.log("Loading");
-  }
-
-  //create fuction to edit grid style of picture frame
-  function createGridItems(dataArray) {
+  async function createGridItems(dataArray) {
     const gridItems = [];
     for (let i = 0; i < dataArray.length; i++) {
       let type = Math.floor(Math.random() * 4) + 1; // Generate a random type
@@ -79,11 +43,52 @@ const Feed = () => {
     }
     return gridItems;
   }
+  
+  async function fetchData() {
+    const citiesRef = collection(db, "user's post");
+    const q = query(citiesRef);
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id);
+      const uid = doc.id;
+      const uidSnapshot = collection(db, "user's post", doc.id, "post");
+      const post = await getDocs(uidSnapshot);
+      post.forEach(async (doc) => {
+        const postData = doc.data();
+
+        try {
+          const storageRef = ref(storage, postData.img);
+          console.log("pass this");
+          const downloadURL = await getDownloadURL(storageRef);
+          dataArray.push({ ...postData, img: downloadURL });
+
+          setData(await createGridItems(dataArray));
+          setLoading(false);
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    });
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [2]);
+  if (loading) {
+    console.log("Loading");
+  }
+
+  //create fuction to edit grid style of picture frame
+  
 
   return (
     <div className="grid-container">
-      {createGridItems(data)}
-      {loading ? <p>Loading...</p> : null}
+      {data}
+      {loading ? (
+        <p>Loading...</p>
+      ) : null}
     </div>
   );
 };
