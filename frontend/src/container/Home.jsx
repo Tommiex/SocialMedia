@@ -8,9 +8,15 @@ import { useAuth } from "../testAuth/auth";
 
 import './CSS/Home.css'
 
-const Home = () => {
+export const Home = () => {
   const currentUser = useAuth();
   console.log(currentUser.currentUser)
+  const getData = async (doc)=>{
+    const values = doc
+    console.log(values)
+  }
+
+  getData()
   return (
     <div className='homeFlex'>
         <Sidebar></Sidebar> 
@@ -31,4 +37,3 @@ const Home = () => {
   )
 }
 
-export default Home
